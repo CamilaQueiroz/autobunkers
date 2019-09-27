@@ -4,6 +4,7 @@ import api from '../Services/api';
 export default function Details({ match }) {
   const [vehicle, setVehicle] = useState({});
   const [loading, setLoading] = useState(true);
+  const [photos, setPhotos] = useState([]);
   const [messageError, setMessageError] = useState('');
 
   useEffect(() => {
@@ -19,6 +20,7 @@ export default function Details({ match }) {
         setVehicle(response.data);
 
         setLoading(false);
+        setPhotos(response.data.fotos);
       })
       .catch(error => {
         console.error(`error ${error}`);
@@ -34,6 +36,11 @@ export default function Details({ match }) {
             {loading && <h1>Carregando...</h1>}
             <h1>{vehicle.descveic}</h1>
             <h2>{vehicle.cor_Veiculo}</h2>
+            <div>
+              {photos.map(photo => (
+                <img src={photo.url} alt="Veiculo" />
+              ))}
+            </div>
           </div>
         </div>
       </div>

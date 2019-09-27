@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { brands, models, year } from '../Services/apiCombos';
+import { brands, models } from '../Services/apiCombos';
 
 export default function Search() {
   const [brandsCombo, setBrandsCombo] = useState([]);

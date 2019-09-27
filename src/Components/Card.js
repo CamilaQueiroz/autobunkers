@@ -9,15 +9,24 @@ export default function Card({ vehicle }) {
   }, [vehicle.descveiccompleto]);
   return (
     <>
-      <Link to={`/detalhes/${vehicle.iD_Veiculo}/${DescVeic}`} className="card">
-        <div className="card-divider">
-          <h1>{vehicle.descveic}</h1>
+      <div className="card mb-3">
+        <div className="row no-gutters">
+          <div className="col-md-12">
+            <img src={vehicle.fotos[0].url} className="card-img" alt="..." />
+          </div>
+          <div className="col-md-12">
+            <div className="card-body">
+              <h5 className="card-title">{vehicle.desc_VeicMarca} {vehicle.desc_VeicModelo}</h5>
+              <p className="card-text">{vehicle.desc_VeicTipo}</p>
+              <p className="card-text"><small className="text-muted">{vehicle.obs_Veiculo.substr(0,200)} 
+              <Link to={`/detalhes/${vehicle.iD_Veiculo}/${DescVeic}`}> ver mais...</Link></small></p>
+              <Link to={`/detalhes/${vehicle.iD_Veiculo}/${DescVeic}`} className="btn btn-outline-danger btn-block">
+                Ver veículo
+              </Link>
+            </div>
+          </div>
         </div>
-        <img src={vehicle.fotos[0].url} alt="Carro" />
-        <div className="card-section">
-          <h2>Description</h2>
-        </div>
-      </Link>
+      </div>
     </>
   );
 }

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import api from '../Services/api';
+
+
 import Card from '../Components/Card';
+import MarcasList from '../Components/MarcasList'
 
 export default function Main() {
   const [stock, setStock] = useState([]);
@@ -14,7 +17,7 @@ export default function Main() {
         iD_TipoVeiculo: 0,
         ordenacao: 1,
         paginaCorrente: 1,
-        qtdItensPagina: 5000,
+        qtdItensPagina: 5,
       })
       .then(async response => {
         if (response.status !== 200) {
@@ -32,18 +35,25 @@ export default function Main() {
   });
 
   return (
-    <div classNameNameName="container">
-      <div classNameNameName="grid-x grid-padding-x">
-        {messageError && <h1>{messageError}</h1>}
-        {loading && <h1>Carregando...</h1>}
-        {stock.map(car => (
-          <div
-            classNameNameName="column small-12 medium-6"
-            key={car.iD_Veiculo}
-          >
-            <Card vehicle={car} />
+    <div>
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-12 col-md-3 col-lg-3 align-center">
+            <MarcasList />
           </div>
-        ))}
+          <div className="col-sm-12 col-md-6 col-lg-6">
+            {messageError && <h1>{messageError}</h1>}
+            {loading && <h1>Carregando...</h1>}
+            {stock.map(car => (
+              <div key={car.iD_Veiculo}>
+                <Card vehicle={car} />
+              </div>
+            ))}
+          </div>
+          <div className="col-sm-12 col-md-3 col-lg-3">
+            < img className="img-fluid" src="https://autobunkers.com.br/Images/ann/lexus/thumb-estoque-lexus-300x300.jpg" alt="" />
+          </div>
+        </div>
       </div>
     </div>
   );

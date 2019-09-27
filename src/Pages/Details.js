@@ -33,11 +33,7 @@ export default function Details({ match }) {
             {messageError && <h1>{messageError}</h1>}
             {loading && <h1>Carregando...</h1>}
             <h1>{vehicle.descveic}</h1>
-            <div>
-              {vehicle.fotos.map(foto => {
-                return <img src={foto.url} alt="foto" />;
-              })}
-            </div>
+            <h2>{vehicle.cor_Veiculo}</h2>
           </div>
         </div>
       </div>

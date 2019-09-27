@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import api from '../Services/api';
 import Card from '../Components/Card';
+import Search from '../Components/Search';
 
 export default function Main() {
   const [stock, setStock] = useState([]);
@@ -32,15 +33,13 @@ export default function Main() {
   });
 
   return (
-    <div classNameNameName="container">
-      <div classNameNameName="grid-x grid-padding-x">
+    <div className="container">
+      <Search />
+      <div className="grid-x grid-padding-x">
         {messageError && <h1>{messageError}</h1>}
         {loading && <h1>Carregando...</h1>}
         {stock.map(car => (
-          <div
-            classNameNameName="column small-12 medium-6"
-            key={car.iD_Veiculo}
-          >
+          <div className="column small-12 medium-6" key={car.iD_Veiculo}>
             <Card vehicle={car} />
           </div>
         ))}

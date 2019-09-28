@@ -43,7 +43,13 @@ export default function Main() {
           </div>
           <div className="col-sm-12 col-md-6 col-lg-6">
             {messageError && <h1>{messageError}</h1>}
-            {loading && <h1>Carregando...</h1>}
+            {loading &&
+              <div class="d-flex justify-content-center">
+                <div class="spinner-grow text-danger" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+            }
             {stock.map(car => (
               <div key={car.iD_Veiculo}>
                 <Card vehicle={car} />

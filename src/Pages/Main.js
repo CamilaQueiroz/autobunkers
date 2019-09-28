@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import api from '../Services/api';
 
-
 import Card from '../Components/Card';
-import MarcasList from '../Components/MarcasList'
+import MarcasList from '../Components/MarcasList';
 
 export default function Main() {
   const [stock, setStock] = useState([]);
@@ -57,7 +56,11 @@ export default function Main() {
             ))}
           </div>
           <div className="col-sm-12 col-md-3 col-lg-3">
-            < img className="img-fluid" src="https://autobunkers.com.br/Images/ann/lexus/thumb-estoque-lexus-300x300.jpg" alt="" />
+            <img
+              className="img-fluid"
+              src="https://autobunkers.com.br/Images/ann/lexus/thumb-estoque-lexus-300x300.jpg"
+              alt=""
+            />
           </div>
         </div>
       </div>

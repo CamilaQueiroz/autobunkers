@@ -29,21 +29,32 @@ export default function Details({ match }) {
   });
   return (
     <>
-      <div className="container">
-        <div className="grid-x grid-padding-x">
-          <div className="cell small-12">
-            {messageError && <h1>{messageError}</h1>}
-            {loading && <h1>Carregando...</h1>}
-            <h1>{vehicle.descveic}</h1>
-            <h2>{vehicle.cor_Veiculo}</h2>
-            <div>
-              {photos.map(photo => (
-                <img src={photo.url} alt="Veiculo" />
-              ))}
+      {messageError && <h1>{messageError}</h1>}
+      {loading && <h1>Carregando...</h1>}
+      <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
+        <div className="carousel-inner">
+          {photos.map((photo, index) => (
+            <div className={`carousel-item ${index === 0 && 'active'}`}>
+              <img src={photo.url} alt="Veiculo" />
             </div>
-          </div>
+          ))}
         </div>
+        <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span
+            className="carousel-control-prev-icon"
+            aria-hidden="true"
+          />
+          <span className="sr-only">Previous</span>
+        </a>
+        <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span className="sr-only">Next</span>
+        </a>
       </div>
+
+      <h1>{vehicle.descveiccompleto}</h1>
+      <h2>{vehicle.cor_Veiculo}</h2>
+
     </>
   );
 }

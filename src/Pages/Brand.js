@@ -14,6 +14,7 @@ export default function Brand({ match }) {
             ordenacao: 1,
             paginaCorrente: 1,
             qtdItensPagina: 5000,
+            qtdeTotalRegistros: 150,
             likeBuscaMarcaModelo: match.params.brand
         });
         listarMarcas.then(res => setList(res.data));

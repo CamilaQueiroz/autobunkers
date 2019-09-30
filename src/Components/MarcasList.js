@@ -20,16 +20,14 @@ export default function MarcasList() {
 
 
     return (
-        <>
-            <div className="list-group">
+        <div className="row">
+            <ul className="list-unstyled">
                 {
                     list.map(marca => (
-                        <Link key={marca.iD_VeicMarca} to={`/${marca.descricao}`} className="list-group-item list-group-item-action list-group-item-light">{marca.descricao}</Link>
+                        <li className="pt-1"><Link className="text-secondary" key={marca.iD_VeicMarca} to={`/${marca.descricao}`}>{marca.descricao} <span class="badge badge-info">10</span></Link></li>
                     ))
                 }
-
-            </div>
-
-        </>
+            </ul>
+        </div>
     );
 }

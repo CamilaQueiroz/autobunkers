@@ -3,6 +3,7 @@ import api from '../Services/api';
 
 import Card from '../Components/Card';
 import MarcasList from '../Components/MarcasList';
+import Search from '../Components/Search';
 
 export default function Main() {
   const [stock, setStock] = useState([]);
@@ -37,6 +38,9 @@ export default function Main() {
     <div>
       <div className="container">
         <div className="row">
+          <div className="col-12">
+            <Search />
+          </div>
           <div className="col-sm-12 col-md-3 col-lg-3 align-center">
             <MarcasList />
           </div>

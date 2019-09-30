@@ -38,7 +38,28 @@ export default function Details({ match }) {
             <h2>{vehicle.cor_Veiculo}</h2>
           </div>
         </div>
+        <a
+          className="carousel-control-prev"
+          href="#carouselExampleControls"
+          role="button"
+          data-slide="prev"
+        >
+          <span className="carousel-control-prev-icon" aria-hidden="true" />
+          <span className="sr-only">Previous</span>
+        </a>
+        <a
+          className="carousel-control-next"
+          href="#carouselExampleControls"
+          role="button"
+          data-slide="next"
+        >
+          <span className="carousel-control-next-icon" aria-hidden="true" />
+          <span className="sr-only">Next</span>
+        </a>
       </div>
+
+      <h1>{vehicle.descveiccompleto}</h1>
+      <h2>{vehicle.cor_Veiculo}</h2>
     </>
   );
 }

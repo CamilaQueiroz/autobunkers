@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 import api from '../Services/api';
-
 import Card from '../Components/Card';
 import MarcasList from '../Components/MarcasList';
 import Search from '../Components/Search';
@@ -44,10 +43,10 @@ function Main(props) {
   });
 
   return (
-    <div>
+    <div className="container-fluid">
       <div className="container">
         <div className="row">
-          <div className="col-12">
+          <div className="col-sm-12 col-md-12 col-lg-12">
             <Search />
           </div>
           <SearchAdv />
@@ -73,10 +72,7 @@ function Main(props) {
           </div>
           <div className="col-sm-12 col-md-3 col-lg-3">
             <img
-              className="img-fluid"
-              src="https://autobunkers.com.br/Images/ann/lexus/thumb-estoque-lexus-300x300.jpg"
-              alt=""
-            />
+              className="img-fluid" src="https://autobunkers.com.br/Images/ann/lexus/thumb-estoque-lexus-300x300.jpg" alt="" />
           </div>
         </div>
       </div>

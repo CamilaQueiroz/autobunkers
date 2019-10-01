@@ -7,19 +7,35 @@ export const brands = api.post('api/Combos/requestMarcasEmpresa', {
 });
 
 export async function models(idBrand) {
-  const teste = await api.post('api/Combos/requestModelosEmpresa', {
+  const modelsCombo = await api.post('api/Combos/requestModelosEmpresa', {
     iD_Empresa: 1007,
     idVeicMarca: idBrand,
     idCategoria: 1,
     iD_EmpresaGrupo: 1007,
   });
-  return teste;
+  return modelsCombo;
 }
 
-export const year = api.post('api/Combos/requestAnosModelo', {
-  idCategoria: 2,
-  idVeicMarca: 2,
-  idVeicModelo: 3,
-  iD_EmpresaGrupo: 4,
-  iD_Empresa: 5,
-});
+export async function year(idBrand, idModel) {
+  const yearCombo = await api.post('api/Combos/requestAnosModeloEmpresa', {
+    idCategoria: 1,
+    idVeicMarca: idBrand,
+    idVeicModelo: idModel,
+    iD_EmpresaGrupo: 1007,
+    iD_Empresa: 1007,
+  });
+  return yearCombo;
+}
+
+export async function version(idBrand, idModel, yearModel) {
+  const yearCombo = await api.post('api/Combos/requestVersoesEmpresa', {
+    idCategoria: 1,
+    idVeicMarca: idBrand,
+    idVeicModelo: idModel,
+    anoModelo: yearModel,
+    iD_EmpresaGrupo: 1007,
+    iD_Empresa: 1007,
+  });
+  console.info(yearCombo.data);
+  return yearCombo;
+}

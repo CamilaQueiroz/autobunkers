@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+
 import api from '../Services/api';
 
 import Card from '../Components/Card';
@@ -6,7 +8,7 @@ import MarcasList from '../Components/MarcasList';
 import Search from '../Components/Search';
 import SearchAdv from '../Components/SearchAdv';
 
-export default function Main() {
+function Main(props) {
   const [stock, setStock] = useState([]);
   const [loading, setLoading] = useState(true);
   const [messageError, setMessageError] = useState('');
@@ -26,6 +28,12 @@ export default function Main() {
           return;
         }
         setStock(response.data);
+
+        const { dispatch } = props;
+        dispatch({
+          type: 'ADD_STOCK',
+          stock: response.data,
+        });
 
         setLoading(false);
       })
@@ -50,14 +58,14 @@ export default function Main() {
           </div>
           <div className="col-sm-12 col-md-6 col-lg-6">
             {messageError && <h1>{messageError}</h1>}
-            {loading && (
+            {loading === true && props.mainStock.length === 0 && (
               <div className="d-flex justify-content-center">
                 <div className="spinner-grow text-danger" role="status">
                   <span className="sr-only">Loading...</span>
                 </div>
               </div>
             )}
-            {stock.map(car => (
+            {props.mainStock.map(car => (
               <div key={car.iD_Veiculo}>
                 <Card vehicle={car} />
               </div>
@@ -75,3 +83,7 @@ export default function Main() {
     </div>
   );
 }
+
+export default connect(state => ({
+  mainStock: state.Stock,
+}))(Main);

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const token = '0x1d1d1314d33925a7eb36817fdc43a347';
+const token = '0x29c22ba2144c6641a6de161679c117f2';
 
 const api = axios.create({
   baseURL: 'http://apisites.bndv.com.br',

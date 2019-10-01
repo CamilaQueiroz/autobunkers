@@ -1,31 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import api from '../Services/api';
+import { connect } from 'react-redux';
 
-export default function Details({ match }) {
+function Details(props) {
   const [vehicle, setVehicle] = useState({});
   const [loading, setLoading] = useState(true);
   const [photos, setPhotos] = useState([]);
   const [messageError, setMessageError] = useState('');
 
   useEffect(() => {
-    api
-      .post('/api/Veiculos/requestVeiculo', {
-        iD_Veiculo: match.params.id,
-      })
-      .then(async response => {
-        if (response.status !== 200) {
-          setMessageError('Ocorreu um erro, tente novamente mais tarde');
-          return;
+    if (props.stock.length > 0) {
+      const idParam = Number(props.match.params.id);
+      let vehicleDetail = '';
+      props.stock.some(car => {
+        if (car.iD_Veiculo === idParam) {
+          vehicleDetail = car;
         }
-        setVehicle(response.data);
-
-        setLoading(false);
-        setPhotos(response.data.fotos);
-      })
-      .catch(error => {
-        console.error(`error ${error}`);
-        setMessageError('Ocorreu um erro, tente novamente mais tarde');
+        return car.iD_Veiculo === idParam;
       });
+      console.info(vehicleDetail);
+      setVehicle(vehicleDetail);
+      setPhotos(vehicleDetail.fotos);
+    } else {
+      setMessageError('Ocorreu um erro, tente novamente mais tarde');
+    }
+    setLoading(false);
   });
   return (
     <>
@@ -47,3 +45,7 @@ export default function Details({ match }) {
     </>
   );
 }
+
+export default connect(state => ({
+  stock: state.Stock,
+}))(Details);

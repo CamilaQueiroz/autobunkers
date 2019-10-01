@@ -1,0 +1,14 @@
+body {
+    background-color: #ebebeb !important;
+    width: 100%;
+}
+
+.carousel {
+    width: 100%;
+    padding: auto;
+    margin: auto;
+}
+
+.carousel img {
+    width: 100%;
+}

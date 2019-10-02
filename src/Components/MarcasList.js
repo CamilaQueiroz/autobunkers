@@ -20,7 +20,6 @@ export default function MarcasList() {
 
 
     return (
-        <div className="row">
             <ul className="list-unstyled">
                 {
                     list.map(marca => (
@@ -28,6 +27,5 @@ export default function MarcasList() {
                     ))
                 }
             </ul>
-        </div>
     );
 }

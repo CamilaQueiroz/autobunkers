@@ -11,7 +11,7 @@ import Brand from './Pages/Brand';
 export default function Routes() {
   return (
     <Switch>
-      <Route path="/estoque" component={Main} />
+      <Route path="/" exact component={Main} />
       <Route path="/:brand" exact component={Brand} />
       <Route path="/detalhes/:id/:descveic" component={Details} />
     </Switch>

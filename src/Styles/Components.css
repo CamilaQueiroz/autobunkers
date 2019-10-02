@@ -2,6 +2,20 @@ body {
     background-color: #ebebeb !important;
     width: 100%;
 }
+/* 
+.sticky {
+    position: sticky;
+    top: 10px;
+  } */
+
+  .text-size--22 {
+      font-size: 22px !important;
+  }
+
+.nav-link {
+    display: inherit;
+    padding: 1.5rem 1rem !important;
+}
 
 .carousel {
     width: 100%;
@@ -11,4 +25,67 @@ body {
 
 .carousel img {
     width: 100%;
+}
+
+
+
+
+
+
+
+
+
+/* Card */
+
+.card-vehicle-stock p.card-vehicle-title {
+    font-weight: bold;
+    font-size: 20px;
+
+}
+
+.card-vehicle-stock p.card-vehicle-title--2 {
+    font-weight: bold;
+    font-size: 22px;
+    
+}
+
+.custom-card--2 {
+    background-color: #333 !important;
+}
+
+.custom-card--2 h1,
+.custom-card--2 p 
+{
+    color: #fff !important;
+}
+
+.custom-card--3 {
+    background-color: #fff !important;
+}
+
+.custom-card--3 h1,
+.custom-card--3 p 
+{
+    color: #333 !important;
+}
+
+.custom-list h2 {
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.custom-list li strong {
+    font-size: 18px;
+}
+
+
+/* LIGHTBOX */
+
+.col-div-lightbox {
+    width: 100%;
+}
+
+.col-div-lightbox img.img-lightbox-custom {
+    width: 20% !important;
+    padding: .2rem
 }

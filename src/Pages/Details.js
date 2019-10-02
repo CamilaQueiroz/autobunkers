@@ -89,7 +89,7 @@ export default function Details({ match, productsImages }) {
             </div>
           </div>
           <div className="col-sm-12 col-md-12 col-lg-5">
-            <div className="card">
+            <div className="card bg-dark-gray">
               <div className="card-body">
                 <h3 className="card-title text-right">R${vehicle.vlrWeb_Veiculo}</h3>
                 <div className="card-text">
@@ -97,25 +97,25 @@ export default function Details({ match, productsImages }) {
                     <div className="col-sm-12 col-md-12 col-lg-12">
                       <ul className="list-group custom-list list-group-horizontal flex-wrap">
                         <li className="list-group-item border-0">
-                          <h2 className="">Ano</h2><strong> {vehicle.anoveic}</strong>
+                          <h2 className="text-danger">Ano</h2><strong> {vehicle.anoveic}</strong>
                         </li>
                         <li className="list-group-item border-0">
-                          <h2 className="">KM</h2><strong> {vehicle.anoveic}</strong>
+                          <h2 className="text-danger">KM</h2><strong> {vehicle.anoveic}</strong>
                         </li>
                         <li className="list-group-item border-0">
-                          <h2 className="">Câmbio</h2><strong> {vehicle.anoveic}</strong>
+                          <h2 className="text-danger">Câmbio</h2><strong> {vehicle.anoveic}</strong>
                         </li>
                         <li className="list-group-item border-0">
-                          <h2 className="">Carroceria</h2><strong> {vehicle.anoveic}</strong>
+                          <h2 className="text-danger">Carroceria</h2><strong> {vehicle.anoveic}</strong>
                         </li>
                         <li className="list-group-item border-0">
-                          <h2 className="">Combustível</h2><strong> {vehicle.anoveic}</strong>
+                          <h2 className="text-danger">Combustível</h2><strong> {vehicle.anoveic}</strong>
                         </li>
                         <li className="list-group-item border-0">
-                          <h2 className="">Cor</h2><strong> {vehicle.anoveic}</strong>
+                          <h2 className="text-danger">Cor</h2><strong> {vehicle.anoveic}</strong>
                         </li>
                         <li className="list-group-item border-0">
-                          <h2 className="">Final de placa</h2><strong> {vehicle.anoveic}</strong>
+                          <h2 className="text-danger">Final de placa</h2><strong> {vehicle.anoveic}</strong>
                         </li>
                         {/* <li className="list-group-item border-0">
                     <h2 className="">ano</h2><strong> {vehicle.anoveic}</strong>
@@ -211,7 +211,7 @@ export default function Details({ match, productsImages }) {
             <div className="col-sm-12 col-md-12 col-lg-12">
               <img className="img-fluid" src={urusjpg} alt="..." />
             </div>
-            
+
             <div className="col-sm-12 col-md-12 col-lg-12">
               <p>{vehicle.obs_Veiculo}</p>
             </div>

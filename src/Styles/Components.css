@@ -12,9 +12,22 @@ body {
       font-size: 22px !important;
   }
 
+  .text-size--42 {
+    font-size: 42px !important;
+}
+
 .nav-link {
     display: inherit;
     padding: 1.5rem 1rem !important;
+}
+
+.navbar-transparent {
+    background-color: #f1f1f1 !important;
+    opacity: 0.975;
+}
+
+.navbar-transparent a {
+    font-weight: 600;
 }
 
 .carousel {
@@ -29,6 +42,24 @@ body {
 
 
 
+
+
+.main-side--1 {
+    -webkit-transform: rotate(180deg);   
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);    writing-mode: vertical-lr; 
+    transform: rotate(180deg);
+}
+
+
+
+/* LISTS */
+
+.list-marca-link a {
+    font-weight: 500;
+}
 
 
 
@@ -76,6 +107,13 @@ body {
 
 .custom-list li strong {
     font-size: 18px;
+}
+
+
+.bg-image--card--1 {
+    background-image: url('../Images/urus.jpg');
+    background-position: 50% 88%;
+    border: none !important;
 }
 
 

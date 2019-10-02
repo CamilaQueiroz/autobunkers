@@ -20,12 +20,14 @@ export default function MarcasList() {
 
 
     return (
-            <ul className="list-unstyled">
+        <>
+            <span className="list-marca-link">
                 {
                     list.map(marca => (
-                        <li className="pt-1"><Link className="text-secondary" key={marca.iD_VeicMarca} to={`/${marca.descricao}`}>{marca.descricao} <span className="badge badge-info">10</span></Link></li>
+                        <Link className="text-dark text-decoration-none p-2 float-left" key={marca.iD_VeicMarca} to={`/${marca.descricao}`}>{marca.descricao} <span className="badge badge-danger text-decoration-none">10</span></Link>
                     ))
                 }
-            </ul>
+            </span>
+        </>
     );
 }

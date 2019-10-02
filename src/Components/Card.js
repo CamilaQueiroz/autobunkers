@@ -19,7 +19,7 @@ export default function Card({ vehicle }) {
           </div>
           <div className="card-img-overlay h-100 d-flex flex-column justify-content-end">
             <p className="d-flex m-1 text-size--22">
-              <span className="flex-fill"><i class="fas fa-grip-horizontal text-success"></i></span>
+              <span className="flex-fill"><i className="fas fa-grip-horizontal text-success"></i></span>
               <span className="flex-fill text-light text-right card-vehicle-title--2">R${vehicle.vlrWeb_Veiculo} </span></p>
           </div>
           {/* <div className="card-text">

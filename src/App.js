@@ -5,13 +5,13 @@ import { Provider } from 'react-redux';
 import store from './Store/store';
 import Nav from './Components/Header/Nav';
 import Routes from './routes';
-import './Styles/Components.css'
+import './Styles/Components.css';
 
 function App() {
   return (
     <Provider store={store}>
-      <Nav />
       <BrowserRouter>
+        <Nav />
         <Routes />
       </BrowserRouter>
     </Provider>

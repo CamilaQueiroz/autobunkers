@@ -2,6 +2,33 @@ body {
     background-color: #ebebeb !important;
     width: 100%;
 }
+/* 
+.sticky {
+    position: sticky;
+    top: 10px;
+  } */
+
+  .text-size--22 {
+      font-size: 22px !important;
+  }
+
+  .text-size--42 {
+    font-size: 42px !important;
+}
+
+.nav-link {
+    display: inherit;
+    padding: 1.5rem 1rem !important;
+}
+
+.navbar-transparent {
+    background-color: #f1f1f1 !important;
+    opacity: 0.975;
+}
+
+.navbar-transparent a {
+    font-weight: 600;
+}
 
 .carousel {
     width: 100%;
@@ -11,4 +38,92 @@ body {
 
 .carousel img {
     width: 100%;
+}
+
+
+
+
+
+.main-side--1 {
+    -webkit-transform: rotate(180deg);   
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);    writing-mode: vertical-lr; 
+    transform: rotate(180deg);
+}
+
+
+
+/* LISTS */
+
+.list-marca-link a {
+    font-weight: 500;
+}
+
+
+
+
+
+
+/* Card */
+
+.card-vehicle-stock p.card-vehicle-title {
+    font-weight: bold;
+    font-size: 20px;
+
+}
+
+.card-vehicle-stock p.card-vehicle-title--2 {
+    font-weight: bold;
+    font-size: 22px;
+    
+}
+
+.custom-card--2 {
+    background-color: #333 !important;
+}
+
+.custom-card--2 h1,
+.custom-card--2 p 
+{
+    color: #fff !important;
+}
+
+.custom-card--3 {
+    background-color: #fff !important;
+}
+
+.custom-card--3 h1,
+.custom-card--3 p 
+{
+    color: #333 !important;
+}
+
+.custom-list h2 {
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.custom-list li strong {
+    font-size: 18px;
+}
+
+
+.bg-image--card--1 {
+    background-image: url('../Images/urus.jpg');
+    background-position: 50% 88%;
+    border: none !important;
+}
+
+
+/* LIGHTBOX */
+
+.col-div-lightbox {
+    width: 100%;
+}
+
+.col-div-lightbox img.img-lightbox-custom {
+    width: 20% !important;
+    padding: .2rem
 }

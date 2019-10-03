@@ -8,12 +8,13 @@ function MarcasList() {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    const listarMarcas = api.post('api/Combos/requestMarcasEmpresa', {
-      iD_Empresa: 1007,
-      idCategoria: 1,
-      iD_EmpresaGrupo: 1007,
-    });
-    listarMarcas.then(res => setList(res.data));
+    api
+      .post('api/Combos/requestMarcasEmpresa', {
+        iD_Empresa: 1007,
+        idCategoria: 1,
+        iD_EmpresaGrupo: 1007,
+      })
+      .then(res => setList(res.data));
   });
 
   return (

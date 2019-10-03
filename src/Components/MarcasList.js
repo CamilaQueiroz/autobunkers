@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../Services/api';
 
-export default function MarcasList() {
+import QtdVeiculoMarca from './QtdVeiculoMarca';
+
+function MarcasList() {
   const [list, setList] = useState([]);
 
   useEffect(() => {
@@ -22,9 +24,12 @@ export default function MarcasList() {
             <Link
               className="text-secondary"
               key={marca.iD_VeicMarca}
-              to={`/${marca.descricao}`}
+              to={`/estoque/${marca.descricao}`}
             >
-              {marca.descricao} <span class="badge badge-info">10</span>
+              {marca.descricao}{' '}
+              <span className="badge badge-info">
+                <QtdVeiculoMarca idMarca={marca.iD_VeicMarca} />
+              </span>
             </Link>
           </li>
         ))}
@@ -32,3 +37,5 @@ export default function MarcasList() {
     </div>
   );
 }
+
+export default MarcasList;

@@ -1,4 +1,5 @@
 import React from 'react';
+import Search from '../Search';
 
 export default function Nav() {
   return (
@@ -79,20 +80,7 @@ export default function Nav() {
                 </div>
               </li>
             </ul>
-            <form className="form-inline my-2 my-lg-0">
-              <input
-                className="form-control mr-sm-2"
-                type="search"
-                placeholder="Veículo..."
-                aria-label="Search"
-              />
-              <button
-                className="btn btn-outline-danger my-2 my-sm-0"
-                type="submit"
-              >
-                Buscar
-              </button>
-            </form>
+            <Search />
           </div>
         </div>
       </nav>

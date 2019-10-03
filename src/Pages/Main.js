@@ -19,7 +19,7 @@ function Main(props) {
         iD_TipoVeiculo: 0,
         ordenacao: 1,
         paginaCorrente: 1,
-        qtdItensPagina: 5,
+        qtdItensPagina: 5000,
       })
       .then(async response => {
         if (response.status !== 200) {
@@ -46,9 +46,6 @@ function Main(props) {
     <div className="container-fluid">
       <div className="container">
         <div className="row">
-          <div className="col-sm-12 col-md-12 col-lg-12">
-            <Search />
-          </div>
           <SearchAdv />
         </div>
         <div className="row">
@@ -72,7 +69,10 @@ function Main(props) {
           </div>
           <div className="col-sm-12 col-md-3 col-lg-3">
             <img
-              className="img-fluid" src="https://autobunkers.com.br/Images/ann/lexus/thumb-estoque-lexus-300x300.jpg" alt="" />
+              className="img-fluid"
+              src="https://autobunkers.com.br/Images/ann/lexus/thumb-estoque-lexus-300x300.jpg"
+              alt=""
+            />
           </div>
         </div>
       </div>

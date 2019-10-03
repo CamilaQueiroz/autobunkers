@@ -12,19 +12,17 @@ function Details(props) {
   const [messageError, setMessageError] = useState('');
   const [toggler, setToggler] = useState(false);
   useEffect(() => {
-    if (props.stock.length > 0) {
-      const idParam = Number(props.match.params.id);
-      props.stock.some(car => {
-        if (car.iD_Veiculo === idParam) {
-          setVehicle(car);
-          setPhotos(car.fotos);
-        }
-        return car.iD_Veiculo === idParam;
-      });
-    } else {
-      setMessageError('Ocorreu um erro, tente novamente mais tarde');
-    }
+    const idParam = Number(props.match.params.id);
+    props.stock.some(car => {
+      setMessageError('Carregando...');
+      if (car.iD_Veiculo === idParam) {
+        setVehicle(car);
+        setPhotos(car.fotos);
+      }
+      return car.iD_Veiculo === idParam;
+    });
     setLoading(false);
+    setMessageError('');
   });
 
   return (

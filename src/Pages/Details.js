@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import api from '../Services/api';
 import FsLightbox from 'fslightbox-react';
 import logoSite from '../Images/logo-site.png';
@@ -6,7 +7,7 @@ import urusjpg from '../Images/urus.jpg';
 import '../Styles/Components.css'
 
 
-export default function Details({ match, productsImages }) {
+function Details(props) {
   const [vehicle, setVehicle] = useState({});
   const [loading, setLoading] = useState(true);
   const [photos, setPhotos] = useState([]);
@@ -14,28 +15,20 @@ export default function Details({ match, productsImages }) {
   const [toggler, setToggler] = useState(false);
   const [productIndex, setProductIndex] = useState(0);
   useEffect(() => {
-    api
-      .post('/api/Veiculos/requestVeiculo', {
-        iD_Veiculo: match.params.id,
-      })
-      .then(async response => {
-        if (response.status !== 200) {
-          setMessageError('Ocorreu um erro, tente novamente mais tarde');
-          return;
+    if (props.stock.length > 0) {
+      const idParam = Number(props.match.params.id);
+      let vehicleDetail = '';
+      props.stock.some(car => {
+        if (car.iD_Veiculo === idParam) {
+          vehicleDetail = car;
+          setVehicle(car);
+          setPhotos(car.fotos)
         }
-        setVehicle(response.data);
-
-        setLoading(false);
-        setPhotos(response.data.fotos);
-      })
-      .catch(error => {
-        console.error(`error ${error}`);
-        setMessageError('Ocorreu um erro, tente novamente mais tarde');
+        return car.iD_Veiculo === idParam;
       });
+    }
+  })
 
-
-
-  });
   return (
 
     <div className="container-fluid mt-5 p-0">
@@ -162,7 +155,6 @@ export default function Details({ match, productsImages }) {
             </div>
 
           </div>
-
         </div>
         <div className="row mt-3">
           <div className="col-sm-12 col-md-12 col-lg-12 p-0">
@@ -227,3 +219,5 @@ export default function Details({ match, productsImages }) {
 
   );
 }
+
+export default connect(state => ({ stock: state.Stock }))(Details);

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+
 import api from '../Services/api';
 import Card from '../Components/Card';
 import MarcasList from '../Components/MarcasList';
@@ -6,7 +8,7 @@ import Search from '../Components/Search';
 import SearchAdv from '../Components/SearchAdv';
 import bannerStock from '../Images/auto-bunkers-banner-home.jpg'
 
-export default function Main() {
+function Main(props) {
   const [stock, setStock] = useState([]);
   const [loading, setLoading] = useState(true);
   const [messageError, setMessageError] = useState('');
@@ -26,6 +28,12 @@ export default function Main() {
           return;
         }
         setStock(response.data);
+
+        const { dispatch } = props;
+        dispatch({
+          type: 'ADD_STOCK',
+          stock: response.data,
+        });
 
         setLoading(false);
       })
@@ -115,3 +123,7 @@ export default function Main() {
     </div>
   );
 }
+
+export default connect(state => ({
+  mainStock: state.Stock,
+}))(Main);

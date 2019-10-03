@@ -1,5 +1,4 @@
 import React from 'react';
-import Search from '../Search';
 
 export default function Nav() {
   return (
@@ -80,7 +79,6 @@ export default function Nav() {
                 </div>
               </li>
             </ul>
-            <Search />
           </div>
         </div>
       </nav>

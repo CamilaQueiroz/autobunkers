@@ -81,7 +81,7 @@ function Main(props) {
                 </p>
               </div>
               {messageError && <h1>{messageError}</h1>}
-              {loading && (
+              {loading && props.mainStock.length === 0 && (
                 <div className="d-flex justify-content-center">
                   <div className="spinner-grow text-danger" role="status">
                     <span className="sr-only">Loading...</span>
@@ -89,7 +89,7 @@ function Main(props) {
                 </div>
               )}
 
-              {stock.map(car => (
+              {props.mainStock.map(car => (
                 <div
                   key={car.iD_Veiculo}
                   className="col-sm-12 col-md-6 col-lg-4 card-vehicle-stock"

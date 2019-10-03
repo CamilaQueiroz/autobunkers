@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import FsLightbox from 'fslightbox-react';
-import api from '../Services/api';
 import logoSite from '../Images/logo-site.png';
 import urusjpg from '../Images/urus.jpg';
 import '../Styles/Components.css';
@@ -12,20 +11,20 @@ function Details(props) {
   const [photos, setPhotos] = useState([]);
   const [messageError, setMessageError] = useState('');
   const [toggler, setToggler] = useState(false);
-  const [productIndex, setProductIndex] = useState(0);
   useEffect(() => {
     if (props.stock.length > 0) {
       const idParam = Number(props.match.params.id);
-      let vehicleDetail = '';
       props.stock.some(car => {
         if (car.iD_Veiculo === idParam) {
-          vehicleDetail = car;
           setVehicle(car);
           setPhotos(car.fotos);
         }
         return car.iD_Veiculo === idParam;
       });
+    } else {
+      setMessageError('Ocorreu um erro, tente novamente mais tarde');
     }
+    setLoading(false);
   });
 
   return (

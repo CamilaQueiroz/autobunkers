@@ -1,22 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import api from '../Services/api';
+import { connect } from 'react-redux';
 import Card from '../Components/Card';
 
-export default function Brand({ match }) {
+function Brand({ match, stock }) {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    const listarMarcas = api.post('api/Veiculos/requestVeiculos', {
-      iD_Categoria: 1,
-      iD_TipoVeiculo: 0,
-      ordenacao: 1,
-      paginaCorrente: 1,
-      qtdItensPagina: 5000,
-      qtdeTotalRegistros: 150,
-      likeBuscaMarcaModelo: match.params.brand,
-    });
-    listarMarcas.then(res => setList(res.data));
-    console.log(list);
+    const filteredStock = stock.filter(car =>
+      car.descveiccompleto
+        .toLowerCase()
+        .includes(match.params.brand.toLowerCase())
+    );
+    setList(filteredStock);
   });
   return (
     <>
@@ -32,3 +27,7 @@ export default function Brand({ match }) {
     </>
   );
 }
+
+export default connect(state => ({
+  stock: state.Stock,
+}))(Brand);

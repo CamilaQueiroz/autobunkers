@@ -6,11 +6,14 @@ function Search(props) {
   const [inputValue, setInputValue] = useState('');
   const handleSearch = e => {
     e.preventDefault();
-    const { dispatch } = props;
-    dispatch({
-      type: 'FILTER_STOCK',
-      inputValue,
-    });
+    if (inputValue) {
+      const { dispatch } = props;
+      dispatch({
+        type: 'FILTER_STOCK_TEXT',
+        inputValue,
+      });
+      setInputValue('');
+    }
   };
   return (
     <>
@@ -18,34 +21,38 @@ function Search(props) {
       <div className="card bg-image--card--1 bg-transparent p-5">
         <div className="card-body">
           <div className="input-group input-group-lg">
-            <input
-              type="text"
-              className="form-control border-danger"
-              placeholder="Qual carro está procurando?"
-              aria-label="Recipient's username"
-              aria-describedby="button-addon2"
-            />
-            <div className="input-group-append">
-              <button
-                className="btn btn-danger"
-                type="button"
-                id="button-addon1"
-                data-toggle="tooltip"
-                data-placement="top"
-                title="Busca"
-              >
-                Pesquisar
-              </button>
-              <button
-                className="btn btn-warning"
-                type="button"
-                id="button-addon2"
-                data-toggle="modal"
-                data-target="#modalSearch"
-              >
-                <i className="fab fa-searchengin" />
-              </button>
-            </div>
+            <form onSubmit={handleSearch}>
+              <input
+                type="text"
+                className="form-control border-danger"
+                placeholder="Qual carro está procurando?"
+                aria-label="Recipient's username"
+                aria-describedby="button-addon2"
+                onChange={e => setInputValue(e.target.value)}
+              />
+              <div className="input-group-append">
+                <button
+                  className="btn btn-danger"
+                  type="button"
+                  id="button-addon1"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Busca"
+                  onClick={handleSearch}
+                >
+                  Pesquisar
+                </button>
+                <button
+                  className="btn btn-warning"
+                  type="button"
+                  id="button-addon2"
+                  data-toggle="modal"
+                  data-target="#modalSearch"
+                >
+                  <i className="fab fa-searchengin" />
+                </button>
+              </div>
+            </form>
           </div>
           <div className="col-sm-12 col-md-12 col-lg-12 m-0">
             <p>
@@ -115,6 +122,4 @@ function Search(props) {
   );
 }
 
-export default connect(state => ({
-  stock: state.Stock,
-}))(Search);
+export default connect()(Search);

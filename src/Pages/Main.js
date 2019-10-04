@@ -50,7 +50,7 @@ function Main(props) {
                   </p>
                 )}
               </div>
-              {/* messageError && <h1>{messageError}</h1> */}
+              {/* stock.length === 0 && <h1>Não há veiculos para esta busca</h1> */}
               {qtdVeiculos === 0 && (
                 <div className="d-flex justify-content-center">
                   <div className="spinner-grow text-danger" role="status">
@@ -58,7 +58,6 @@ function Main(props) {
                   </div>
                 </div>
               )}
-
               {stock.map(car => (
                 <div
                   key={car.iD_Veiculo}
@@ -69,7 +68,7 @@ function Main(props) {
               ))}
             </div>
             <div className="row justify-content-around my-5">
-              {pageCount !== 0 && (
+              {pageCount !== 0 && qtdVeiculos > size && (
                 <nav aria-label="Page navigation example">
                   <ul className="pagination">
                     <li className={`page-item ${page <= 0 && 'disabled'}`}>
@@ -123,4 +122,5 @@ function Main(props) {
 
 export default connect(state => ({
   mainStock: state.Stock,
+  textInput: state.textFilter,
 }))(Main);

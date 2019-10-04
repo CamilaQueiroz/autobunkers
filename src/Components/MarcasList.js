@@ -2,27 +2,41 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../Services/api';
 
-export default function MarcasList() {
-    const [list, setList] = useState([]);
+import QtdVeiculoMarca from './QtdVeiculoMarca';
 
-    useEffect(() => {
-        const listarMarcas = api.post('api/Combos/requestMarcasEmpresa', {
-            iD_Empresa: 1007,
-            idCategoria: 1,
-            iD_EmpresaGrupo: 1007,
-        })
-    })
+function MarcasList() {
+  const [list, setList] = useState([]);
 
+  useEffect(() => {
+    api
+      .post('api/Combos/requestMarcasEmpresa', {
+        iD_Empresa: 1007,
+        idCategoria: 1,
+        iD_EmpresaGrupo: 1007,
+      })
+      .then(res => setList(res.data));
+  });
 
-    return (
-        <>
-            <span className="list-marca-link">
-                {
-                    list.map(marca => (
-                        <Link className="text-dark text-decoration-none p-2 float-left" key={marca.iD_VeicMarca} to={`/${marca.descricao}`}>{marca.descricao} <span className="badge badge-danger text-decoration-none">10</span></Link>
-                    ))
-                }
-            </span>
-        </>
-    );
+  return (
+    <div className="row">
+      <ul className="list-unstyled">
+        {list.map(marca => (
+          <li className="pt-1">
+            <Link
+              className="text-secondary"
+              key={marca.iD_VeicMarca}
+              to={`/estoque/${marca.descricao}`}
+            >
+              {marca.descricao}{' '}
+              <span className="badge badge-info">
+                <QtdVeiculoMarca idMarca={marca.iD_VeicMarca} />
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
+
+export default MarcasList;

@@ -39,3 +39,5 @@ export async function version(idBrand, idModel, yearModel) {
   console.info(yearCombo.data);
   return yearCombo;
 }
+
+export const prices = api.post('api/Combos/requestPrecos');

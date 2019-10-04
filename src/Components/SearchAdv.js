@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { brands, models, year, version } from '../Services/apiCombos';
+import { brands, models, year, version, prices } from '../Services/apiCombos';
 
 export default function SearchAdv() {
   const [brandsCombo, setBrandsCombo] = useState([]);
   const [modelsCombo, setModelsCombo] = useState([]);
+  const [tipo, setTipo] = useState(0);
   const [marca, setMarca] = useState('');
   const [modelo, setModelo] = useState('');
   const [yearCombo, setYearCombo] = useState([]);
   const [versionCombo, setVersionCombo] = useState([]);
+  const [priceCombo, setPriceCombo] = useState([]);
+
   useEffect(() => {
     brands
       .then(res => setBrandsCombo(res.data))
+      .catch(err => console.error(err));
+
+    prices
+      .then(res => setPriceCombo(res.data))
       .catch(err => console.error(err));
   });
 
@@ -36,14 +43,30 @@ export default function SearchAdv() {
       .then(res => setVersionCombo(res.data))
       .catch(err => console.error(err));
   };
+  const handleForm = async e => {
+    const filter = {
+      type: tipo,
+      brand: marca,
+      model: modelo,
+      yearMax: yearCombo,
+      version: versionCombo,
+      priceMax: priceCombo,
+    };
+    console.info(e.target.value);
+  };
 
   return (
-    <>
+    <form onChange={handleForm}>
       <div className="row">
         <div className="col-sm-12">
-          <div className="row">
-            <div className="col-sm-3">
-              <select id="tipoVeiculo" className="form-control">
+          <div className="row mt-3">
+            <div className="col-sm-4 form-group">
+              <label htmlFor="tipoVeiculo">Tipo</label>
+              <select
+                id="tipoVeiculo"
+                className="form-control"
+                onChange={e => setTipo(Number(e.target.value))}
+              >
                 <option value="0">Selecione</option>
                 <option value="0">Todos</option>
                 <option value="1">Novos</option>
@@ -51,7 +74,8 @@ export default function SearchAdv() {
               </select>
             </div>
 
-            <div className="col-sm-3">
+            <div className="col-sm-4 form-group">
+              <label htmlFor="brandsCombo">Marca</label>
               <select
                 id="brandsCombo"
                 onChange={loadModels}
@@ -66,7 +90,8 @@ export default function SearchAdv() {
               </select>
             </div>
 
-            <div className="col-sm-3">
+            <div className="col-sm-4 form-group">
+              <label htmlFor="modelsCombo">Modelo</label>
               <select
                 id="modelsCombo"
                 className="form-control"
@@ -81,9 +106,10 @@ export default function SearchAdv() {
               </select>
             </div>
 
-            <div className="col-sm-3">
+            <div className="col-sm-4 form-group">
+              <label htmlFor="yearMaxCombo">Ano Maximo</label>
               <select
-                id="yearMinCombo"
+                id="yearMaxCombo"
                 className="form-control"
                 onChange={loadVersions}
               >
@@ -94,7 +120,8 @@ export default function SearchAdv() {
               </select>
             </div>
 
-            <div className="col-sm-3">
+            <div className="col-sm-4 form-group">
+              <label htmlFor="version">Versão</label>
               <select id="version" className="form-control">
                 <option>Selecione</option>
                 {versionCombo.map(versionCar => (
@@ -104,9 +131,23 @@ export default function SearchAdv() {
                 ))}
               </select>
             </div>
+
+            <div className="col-sm-4 form-group">
+              <label htmlFor="priceMax">Preço máximo</label>
+              <select
+                id="priceMax"
+                className="form-control"
+                onChange={e => setPriceCombo(Number(e.target.value))}
+              >
+                <option>Selecione</option>
+                {priceCombo.map(price => (
+                  <option value={price.preco}>{price.precoSite}</option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
       </div>
-    </>
+    </form>
   );
 }

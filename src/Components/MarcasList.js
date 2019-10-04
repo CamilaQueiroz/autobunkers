@@ -18,24 +18,15 @@ function MarcasList() {
   });
 
   return (
-    <div className="row">
-      <ul className="list-unstyled">
-        {list.map(marca => (
-          <li className="pt-1">
-            <Link
-              className="text-secondary"
-              key={marca.iD_VeicMarca}
-              to={`/estoque/${marca.descricao}`}
-            >
-              {marca.descricao}{' '}
-              <span className="badge badge-info">
-                <QtdVeiculoMarca idMarca={marca.iD_VeicMarca} />
-              </span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <span className="list-marca-link">
+        {
+          list.map(marca => (
+            <Link className="text-dark text-decoration-none p-2 float-left" key={marca.iD_VeicMarca} to={`/${marca.descricao}`}>{marca.descricao} <span className="badge badge-danger text-decoration-none">10</span></Link>
+          ))
+        }
+      </span>
+    </>
   );
 }
 

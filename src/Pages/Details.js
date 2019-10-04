@@ -29,7 +29,7 @@ function Details(props) {
     <div className="container-fluid mt-5 p-0">
       <div className="container">
         <div className="row">
-          <div className="col-sm-12 col-md-12 col-lg-7">
+          <div className="col-sm-12 col-md-12 col-lg-8">
             <div className="row">
               <div
                 id="carouselExampleIndicators"
@@ -99,7 +99,11 @@ function Details(props) {
                   <span className="sr-only">Next</span>
                 </a>
               </div>
-              <div className="col-div-lightbox mt-3">
+              
+            </div>
+          </div>
+          <div className="col-sm-12 col-md-12 col-lg-4">
+          <div className="col-div-lightbox mt-3">
                 {photos.map(photo => (
                   <img
                     className="img-lightbox-custom"
@@ -121,149 +125,23 @@ function Details(props) {
                   ))}
                 />
               </div>
-            </div>
-          </div>
-          <div className="col-sm-12 col-md-12 col-lg-5">
-            <div className="card bg-dark-gray">
-              <div className="card-body">
-                <h3 className="card-title text-right">
-                  R${vehicle.vlrWeb_Veiculo}
-                </h3>
-                <div className="card-text">
-                  <div className="row">
-                    <div className="col-sm-12 col-md-12 col-lg-12">
-                      <ul className="list-group custom-list list-group-horizontal flex-wrap">
-                        <li className="list-group-item border-0">
-                          <h2 className="text-danger">Ano</h2>
-                          <strong> {vehicle.anoveic}</strong>
-                        </li>
-                        <li className="list-group-item border-0">
-                          <h2 className="text-danger">KM</h2>
-                          <strong> {vehicle.anoveic}</strong>
-                        </li>
-                        <li className="list-group-item border-0">
-                          <h2 className="text-danger">Câmbio</h2>
-                          <strong> {vehicle.anoveic}</strong>
-                        </li>
-                        <li className="list-group-item border-0">
-                          <h2 className="text-danger">Carroceria</h2>
-                          <strong> {vehicle.anoveic}</strong>
-                        </li>
-                        <li className="list-group-item border-0">
-                          <h2 className="text-danger">Combustível</h2>
-                          <strong> {vehicle.anoveic}</strong>
-                        </li>
-                        <li className="list-group-item border-0">
-                          <h2 className="text-danger">Cor</h2>
-                          <strong> {vehicle.anoveic}</strong>
-                        </li>
-                        <li className="list-group-item border-0">
-                          <h2 className="text-danger">Final de placa</h2>
-                          <strong> {vehicle.anoveic}</strong>
-                        </li>
-                        {/* <li className="list-group-item border-0">
-                    <h2 className="">ano</h2><strong> {vehicle.anoveic}</strong>
-                  </li> */}
-                      </ul>
-                    </div>
-                    <div className="col-sm-12 col-md-12 col-lg-12">
-                      <div className="card">
-                        <div className="card-body">
-                          <h5 className="card-title" />
-                          <div className="card-text">
-                            <div className="form-group">
-                              <label htmlFor="exampleFormControlInput1">
-                                Nome
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control"
-                                id="nome"
-                                placeholder="name@examplo.com"
-                              />
-                            </div>
-                            <div className="form-group">
-                              <label htmlFor="exampleFormControlInput1">
-                                E-mail
-                              </label>
-                              <input
-                                type="email"
-                                className="form-control"
-                                id="email"
-                                placeholder="name@examplo.com"
-                              />
-                            </div>
-                            <div className="form-group">
-                              <label htmlFor="exampleFormControlSelect1">
-                                Motivo do contato
-                              </label>
-                              <select
-                                className="form-control"
-                                id="exampleFormControlSelect1"
-                              >
-                                <option>opções</option>
-                                <option>opções</option>
-                                <option>opções</option>
-                                <option>opções</option>
-                                <option>opções</option>
-                              </select>
-                            </div>
-                            <div className="form-group">
-                              <label htmlFor="exampleFormControlTextarea1">
-                                Deixe uma mensagem
-                              </label>
-                              <textarea
-                                className="form-control"
-                                id="exampleFormControlTextarea1"
-                                rows="3"
-                              />
-                            </div>
-                            <button
-                              type="submit"
-                              className="btn btn-success btn-block"
-                            >
-                              Enviar
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
-        <div className="row mt-3">
-          <div className="col-sm-12 col-md-12 col-lg-12 p-0">
-            <div className="card card-custom custom-card--2">
-              <div className="card-body">
-                <div className="row">
-                  <div className="col-sm-12 col-md-12 col-lg-3">
-                    <h1 className="card-title">
-                      <span>{vehicle.desc_VeicMarca}</span>{' '}
-                      <span className="text-danger">
-                        {vehicle.desc_VeicModelo}
-                      </span>
-                    </h1>
-                    <p className="card-text">{vehicle.desc_VeicTipo}</p>
-                    <img className="img-fluid" src={logoSite} alt="Logo" />
-                  </div>
-                  <div className="col-sm-12 col-md-12 col-lg-6">
-                    <div className="card custom-card--3">
-                      <div className="card-body">
-                        <h3 className="card-title">Opicionais do veículo</h3>
-                        <div className="card-text">
-                          <p>{vehicle.obs_Veiculo}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-sm-12 col-md-12 col-lg-3">
-                    <img className="img-fluid" src={logoSite} alt="Logo" />
-                  </div>
-                </div>
-              </div>
+        <div className="row">
+          <div className="row m-5">
+            <div className="col-sm-12 col-md-12 col-lg-5 align-self-center">
+              <h1 className="card-title">
+                <span>{vehicle.desc_VeicMarca}</span>
+                <span className="text-danger">
+                  {vehicle.desc_VeicModelo}
+                </span>
+              </h1>
+              <p className="text-size--42">{vehicle.desc_VeicTipo}</p>
+            </div>
+            <div className="col-sm-12 col-md-12 col-lg-7">
+              <h3 className="card-title">Opicionais do veículo</h3>
+              <p>{vehicle.opcionais}</p>
             </div>
           </div>
           <div className="row">

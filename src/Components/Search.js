@@ -20,8 +20,8 @@ function Search(props) {
       <p className="text-size--22">Encontre seu veículo</p>
       <div className="card bg-image--card--1 bg-transparent p-5">
         <div className="card-body">
-          <div className="input-group input-group-lg">
-            <form onSubmit={handleSearch}>
+
+            <form onSubmit={handleSearch} className="input-group input-group-lg">
               <input
                 type="text"
                 className="form-control border-danger"
@@ -53,7 +53,7 @@ function Search(props) {
                 </button>
               </div>
             </form>
-          </div>
+
           <div className="col-sm-12 col-md-12 col-lg-12 m-0">
             <p>
               <a

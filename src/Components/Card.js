@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 export default function Card({ vehicle }) {
   const [DescVeic, setDescVeic] = useState('');
-  const photo = vehicle.fotos[0].url;
   useEffect(() => {
     const descriptionCar = vehicle.descveiccompleto.replace(/ /gi, '-');
     setDescVeic(descriptionCar);
@@ -25,7 +24,7 @@ export default function Card({ vehicle }) {
           <div className="card-img-overlay h-100 d-flex flex-column justify-content-end">
             <p className="d-flex m-1 text-size--22">
               <span className="flex-fill">
-                <i className="fas fa-grip-horizontal text-success"></i>
+                <i className="fas fa-grip-horizontal text-success" />
               </span>
               <span className="flex-fill text-light text-right card-vehicle-title--2">
                 R${vehicle.vlrWeb_Veiculo}{' '}

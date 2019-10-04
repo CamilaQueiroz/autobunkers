@@ -45,10 +45,12 @@ function Main(props) {
 
   return (
     <div className="container-fluid">
-      <div className="container">
+      <div className="">
         <div className="row">
           <div className="col-sm-12 col-md-12 col-lg-12 my-4">
-            <Search />
+            <div class="container">
+              <Search />
+            </div>
           </div>
           {/* <div className="col-sm-12 col-md-12 col-lg-12">
             <p>

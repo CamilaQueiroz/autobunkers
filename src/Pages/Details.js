@@ -11,8 +11,10 @@ function Details(props) {
   const [photos, setPhotos] = useState([]);
   const [messageError, setMessageError] = useState('');
   const [toggler, setToggler] = useState(false);
+
   useEffect(() => {
     const idParam = Number(props.match.params.id);
+    console.info(`idParam ${idParam}`);
     props.stock.some(car => {
       setMessageError('Carregando...');
       if (car.iD_Veiculo === idParam) {

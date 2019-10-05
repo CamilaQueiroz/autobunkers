@@ -21,7 +21,7 @@ function Main(props) {
     const start = page * size;
     const end = start + size;
     setStock(props.mainStock.slice(start, end));
-  });
+  }, []);
 
   return (
     <div className="container-fluid">

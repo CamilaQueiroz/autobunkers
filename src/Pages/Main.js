@@ -106,7 +106,6 @@ function Main(props) {
             <div className="col d-none d-md-block">
               <p className="text-size--22 m-0">
                 <small className="text-danger bold">
-                  {' '}
                   - Referência em veículos
                 </small>
               </p>

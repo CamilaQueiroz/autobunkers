@@ -6,6 +6,8 @@ body {
 
 
 
+
+
 .page-link--1 {
   position: relative;
   display: block !important;
@@ -83,6 +85,10 @@ body {
 
 .text-size--42 {
   font-size: 42px !important;
+}
+
+.text-size--72 {
+  font-size: 72px !important;
 }
 
 .nav-link {

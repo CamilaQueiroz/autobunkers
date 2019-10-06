@@ -7,6 +7,7 @@ import lojaCima from '../Images/autob-loja--vistacima.jpg';
 
 import Loja from '../Images/autob-loja--2.jpg';
 import '../Styles/Components.css';
+import api from '../Services/api';
 
 function Details(props) {
   const [vehicle, setVehicle] = useState({});
@@ -17,47 +18,49 @@ function Details(props) {
 
   useEffect(() => {
     const idParam = Number(props.match.params.id);
-    console.info(`idParam ${idParam}`);
-    props.stock.some(car => {
-      setMessageError('Carregando...');
-      if (car.iD_Veiculo === idParam) {
-        setVehicle(car);
-        setPhotos(car.fotos);
-      }
-      return car.iD_Veiculo === idParam;
-    });
+    api
+      .post('api/Veiculos/requestVeiculo', {
+        iD_Veiculo: idParam,
+      })
+      .then(res => {
+        if (res.status === 200) {
+          setVehicle(res.data);
+          setPhotos(res.data.fotos);
+        } else {
+          setMessageError('Ocorreu um erro, tente novamente mais tarde');
+        }
+      })
+      .catch(err => console.error(err));
     setLoading(false);
-    setMessageError('');
-  });
+  }, [vehicle]);
 
   return (
     <div className="container-fluid mt-5 p-0">
       <div className="container-fluid">
         <div className="d-flex">
-          <div className="col-sm-12 col-md-12 col-lg-3 d-none d-xl-block bg-dark p-5"
+          <div
+            className="col-sm-12 col-md-12 col-lg-3 d-none d-xl-block bg-dark p-5"
             style={{
-              backgroundImage: 'url(' + Loja + ')',
+              backgroundImage: `url(${  Loja  })`,
               backgroundSize: 'cover',
               backgroundPosition: 'center center',
               backgroundRepeat: 'no-repeat',
-              minHeight: "500px",
-              maxHeight: "100%",
-              opacity: 0.785
-
-
-            }}>
+              minHeight: '500px',
+              maxHeight: '100%',
+              opacity: 0.785,
+            }}
+          >
             <div className="col flex-column main-side--1 text-right text-light">
-              <p className="text-size--42 my-0">
-                {vehicle.desc_VeicTipo}
-              </p>
+              <p className="text-size--42 my-0">{vehicle.desc_VeicTipo}</p>
               <p className="text-size--72 my-0">
-                <strong className="text-danger">{vehicle.desc_VeicMarca} </strong>
+                <strong className="text-danger">
+                  {vehicle.desc_VeicMarca}{' '}
+                </strong>
                 <span> {vehicle.desc_VeicModelo}</span>
               </p>
             </div>
           </div>
           <div className="col-sm-12 col-md-12 col-lg-12 col-xl-9">
-
             <div className="col-sm-12 col-md-12 col-lg-12 col-xl-12">
               <div className="row">
                 <div className="col-sm-12 col-md-12 col-lg-12 col-xl-8">
@@ -73,7 +76,10 @@ function Details(props) {
                           <div className="timeline-item">
                             <div className="animated-background">
                               <div className="d-flex justify-content-center">
-                                <div className="spinner-grow text-danger" role="status">
+                                <div
+                                  className="spinner-grow text-danger"
+                                  role="status"
+                                >
                                   <span className="sr-only">Loading...</span>
                                 </div>
                               </div>
@@ -100,7 +106,8 @@ function Details(props) {
                         {photos.map((photo, index) => (
                           <div
                             key={photo.url}
-                            className={`carousel-item ${index === 0 && 'active'}`}
+                            className={`carousel-item ${index === 0 &&
+                              'active'}`}
                           >
                             <img
                               id="carouselImage"
@@ -136,13 +143,16 @@ function Details(props) {
                         <span className="sr-only">Next</span>
                       </a>
                     </div>
-
                   </div>
                 </div>
                 <div className="col-sm-12 col-md-12 col-lg-12 col-xl-4">
-                  <div class="alert alert-dark" role="alert">
-                    Veja as imagens em tela cheia. 
-                    <a href="#" class="alert-link"> Clique aqui</a> ou clique nas imagens.
+                  <div className="alert alert-dark" role="alert">
+                    Veja as imagens em tela cheia.
+                    <a href="#" className="alert-link">
+                      {' '}
+                      Clique aqui
+                    </a>{' '}
+                    ou clique nas imagens.
                   </div>
                   <div className="col-div-lightbox mt-3">
                     {photos.map(photo => (
@@ -166,7 +176,9 @@ function Details(props) {
                       ))}
                     />
                   </div>
-                  <h3 className="text-size--42 text-right">R${vehicle.vlrWeb_Veiculo}</h3>
+                  <h3 className="text-size--42 text-right">
+                    R${vehicle.vlrWeb_Veiculo}
+                  </h3>
                 </div>
               </div>
             </div>
@@ -183,7 +195,9 @@ function Details(props) {
                   <p className="text-size--42">{vehicle.desc_VeicTipo}</p>
                 </div>
                 <div className="col-sm-12 col-md-12 col-lg-7 bg-dark text-white p-5">
-                  <h3 className="card-title"><span className="text-danger">Opicionais</span> do veículo</h3>
+                  <h3 className="card-title">
+                    <span className="text-danger">Opicionais</span> do veículo
+                  </h3>
                   <p>{vehicle.opcionais}</p>
                 </div>
               </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Nav() {
   return (
@@ -19,37 +20,37 @@ export default function Nav() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="nav navbar-nav ml-auto">
             <li className="nav-item active">
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="https://www.autobunkers.com.br/">
                 Home <span className="sr-only">(current)</span>
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="https://www.autobunkers.com.br/empresa" target="_blank">
                 Empresa
                 </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <Link to={`/`} className="nav-link">
                 Veículos
-                </a>
+                </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="https://www.autobunkers.com.br/consignado" target="_blank">
                 Consignado
                 </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="https://www.autobunkers.com.br/parceiros" target="_blank">
                 Parceiros
                 </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="https://www.autobunkers.com.br/informacoes" target="_blank">
                 Informações
                 </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="https://www.autobunkers.com.br/contato" target="_blank">
                 Contato
                 </a>
             </li>

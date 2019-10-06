@@ -35,13 +35,15 @@ function Main(props) {
         </div>
         <div className="row mt-5">
           <div className="col-sm-12 col-md-2 col-lg-2 align-center main-side--1 text-right">
-            <p className="text-size--22 m-0">
-              <small className="text-danger bold">
-                {' '}
-                - Referência em veículos
+            <div className="col d-none d-md-block">
+              <p className="text-size--22 m-0">
+                <small className="text-danger bold">
+                  {' '}
+                  - Referência em veículos
               </small>
-            </p>
-            <p className="display-4 m-0">Auto Bunkers</p>
+              </p>
+              <p className="display-4 m-0">Auto Bunkers</p>
+            </div>
           </div>
           <div className="col-sm-12 col-md-10 col-lg-10">
             <div className="row">
@@ -54,9 +56,15 @@ function Main(props) {
               </div>
               {/* stock.length === 0 && <h1>Não há veiculos para esta busca</h1> */}
               {qtdVeiculos === 0 && (
-                <div className="d-flex justify-content-center">
-                  <div className="spinner-grow text-danger" role="status">
-                    <span className="sr-only">Loading...</span>
+                <div className="col-4 justify-content-center">
+                  <div className="timeline-item">
+                    <div className="animated-background">
+                      <div className="d-flex justify-content-center">
+                        <div className="spinner-grow text-danger" role="status">
+                          <span className="sr-only">Loading...</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               )}
@@ -71,11 +79,11 @@ function Main(props) {
             </div>
             <div className="row justify-content-around my-5">
               {pageCount !== 0 && qtdVeiculos > size && (
-                <nav aria-label="Page navigation example">
+                <nav aria-label="Page navigation">
                   <ul className="pagination">
                     <li className={`page-item ${page <= 0 && 'disabled'}`}>
                       <a
-                        className="page-link"
+                        className="page-link--1"
                         href="javascript:void(0)"
                         onClick={() => setPage(page - 1)}
                         aria-label="Previous"
@@ -85,7 +93,7 @@ function Main(props) {
                     </li>
                     <li>
                       <a
-                        className="page-link pagination"
+                        className="page-link--1 pagination"
                         href="javascript:void(0)"
                         aria-label="Previous"
                       >
@@ -98,7 +106,7 @@ function Main(props) {
                         'disabled'}`}
                     >
                       <a
-                        className="page-link"
+                        className="page-link--1"
                         href="javascript:void(0)"
                         onClick={() => setPage(page + 1)}
                         aria-label="Next"

@@ -29,142 +29,170 @@ function Details(props) {
 
   return (
     <div className="container-fluid mt-5 p-0">
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-12 col-md-12 col-lg-8">
-            <div className="row">
-              <div
-                id="carouselExampleIndicators"
-                className="carousel slide"
-                data-ride="carousel"
-              >
-                {messageError && <h1>{messageError}</h1>}
-                {loading && (
-                  <div className="d-flex justify-content-center">
-                    <div className="spinner-grow text-danger" role="status">
-                      <span className="sr-only">Loading...</span>
-                    </div>
-                  </div>
-                )}
-                <ol className="carousel-indicators">
-                  <li
-                    data-target="#carouselExampleIndicators"
-                    data-slide-to="0"
-                    className="active"
-                  />
-                  <li
-                    data-target="#carouselExampleIndicators"
-                    data-slide-to="1"
-                  />
-                  <li
-                    data-target="#carouselExampleIndicators"
-                    data-slide-to="2"
-                  />
-                </ol>
-                <div className="carousel-inner">
-                  {photos.map((photo, index) => (
-                    <div
-                      key={photo.url}
-                      className={`carousel-item ${index === 0 && 'active'}`}
-                    >
-                      <img
-                        id="carouselImage"
-                        className="img-fluid"
-                        src={photo.url}
-                        alt=""
-                      />
-                    </div>
-                  ))}
-                </div>
-                <a
-                  className="carousel-control-prev"
-                  href="#carouselExampleIndicators"
-                  role="button"
-                  data-slide="prev"
-                >
-                  <span
-                    className="carousel-control-prev-icon"
-                    aria-hidden="true"
-                  />
-                  <span className="sr-only">Previous</span>
-                </a>
-                <a
-                  className="carousel-control-next"
-                  href="#carouselExampleIndicators"
-                  role="button"
-                  data-slide="next"
-                >
-                  <span
-                    className="carousel-control-next-icon"
-                    aria-hidden="true"
-                  />
-                  <span className="sr-only">Next</span>
-                </a>
-              </div>
+      <div className="row">
+        <div className="d-flex">
+          <div className="col-sm-12 col-md-12 col-lg-3 d-none d-md-block bg-dark p-5"
+            style={{
+              backgroundImage: 'url(' + urusjpg + ')',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center center',
+              backgroundRepeat: 'no-repeat',
+              minHeight: "500px",
+              maxHeight: "100%",
+              opacity: 0.2
               
-            </div>
+
+            }}>
           </div>
-          <div className="col-sm-12 col-md-12 col-lg-4">
-          <div className="col-div-lightbox mt-3">
-                {photos.map(photo => (
-                  <img
-                    className="img-lightbox-custom"
-                    onClick={() => setToggler(!toggler)}
-                    key={photo.url}
-                    src={photo.url}
-                    alt="photos"
-                  />
-                ))}
-                <FsLightbox
-                  toggler={toggler}
-                  customSources={photos.map(photo => (
-                    <img
-                      className="img-lightbox-custom"
-                      key={photo.url}
-                      src={photo.url}
-                      alt="photos"
-                    />
-                  ))}
-                />
-              </div>
-            
-          </div>
-        </div>
-        <div className="row">
-          <div className="row m-5">
-            <div className="col-sm-12 col-md-12 col-lg-5 align-self-center">
-              <h1 className="card-title">
-                <span>{vehicle.desc_VeicMarca}</span>
-                <span className="text-danger">
-                  {vehicle.desc_VeicModelo}
-                </span>
-              </h1>
-              <p className="text-size--42">{vehicle.desc_VeicTipo}</p>
-            </div>
-            <div className="col-sm-12 col-md-12 col-lg-7">
-              <h3 className="card-title">Opicionais do veículo</h3>
-              <p>{vehicle.opcionais}</p>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-sm-12 col-md-12 col-lg-12">
-              <div className="card">
-                <div className="card-body">
-                  {/* <p className="card-text"></p> */}
-                  <div className="jumbotron">
-                    <h3>Opicionais do veículo</h3>
-                    <hr className="my-4" />
-                    <p>{vehicle.opcionais}</p>
+          <div className="col-md-12 col-lg-9">
+
+            <div className="col-md-12 col-lg-12">
+              <div className="row">
+                <div className="col-sm-12 col-md-12 col-lg-8">
+                  <div className="row">
+                    <div
+                      id="carouselExampleIndicators"
+                      className="carousel slide"
+                      data-ride="carousel"
+                    >
+                      {messageError && <h1>{messageError}</h1>}
+                      {loading && (
+                        <div className="col-4 justify-content-center">
+                          <div className="timeline-item">
+                            <div className="animated-background">
+                              <div className="d-flex justify-content-center">
+                                <div className="spinner-grow text-danger" role="status">
+                                  <span className="sr-only">Loading...</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      <ol className="carousel-indicators">
+                        <li
+                          data-target="#carouselExampleIndicators"
+                          data-slide-to="0"
+                          className="active"
+                        />
+                        <li
+                          data-target="#carouselExampleIndicators"
+                          data-slide-to="1"
+                        />
+                        <li
+                          data-target="#carouselExampleIndicators"
+                          data-slide-to="2"
+                        />
+                      </ol>
+                      <div className="carousel-inner">
+                        {photos.map((photo, index) => (
+                          <div
+                            key={photo.url}
+                            className={`carousel-item ${index === 0 && 'active'}`}
+                          >
+                            <img
+                              id="carouselImage"
+                              className="img-fluid"
+                              src={photo.url}
+                              alt=""
+                            />
+                          </div>
+                        ))}
+                      </div>
+                      <a
+                        className="carousel-control-prev"
+                        href="#carouselExampleIndicators"
+                        role="button"
+                        data-slide="prev"
+                      >
+                        <span
+                          className="carousel-control-prev-icon"
+                          aria-hidden="true"
+                        />
+                        <span className="sr-only">Previous</span>
+                      </a>
+                      <a
+                        className="carousel-control-next"
+                        href="#carouselExampleIndicators"
+                        role="button"
+                        data-slide="next"
+                      >
+                        <span
+                          className="carousel-control-next-icon"
+                          aria-hidden="true"
+                        />
+                        <span className="sr-only">Next</span>
+                      </a>
+                    </div>
+
                   </div>
                 </div>
+                <div className="col-sm-12 col-md-12 col-lg-4">
+                  <div className="col-div-lightbox mt-3">
+                    {photos.map(photo => (
+                      <img
+                        className="img-lightbox-custom"
+                        onClick={() => setToggler(!toggler)}
+                        key={photo.url}
+                        src={photo.url}
+                        alt="photos"
+                      />
+                    ))}
+                    <FsLightbox
+                      toggler={toggler}
+                      customSources={photos.map(photo => (
+                        <img
+                          className="img-lightbox-custom"
+                          key={photo.url}
+                          src={photo.url}
+                          alt="photos"
+                        />
+                      ))}
+                    />
+                  </div>
+                  <h3 className="display-3 text-right">R${vehicle.vlrWeb_Veiculo}</h3>
+                </div>
               </div>
-            </div>
-            <div className="col-sm-12 col-md-12 col-lg-12">
-              <img className="img-fluid" src={urusjpg} alt="..." />
+
             </div>
 
-            <div className="col-sm-12 col-md-12 col-lg-12">
-              <p>{vehicle.obs_Veiculo}</p>
+            <div className="container-fluid">
+              <div className="row p-5">
+                <div className="col-sm-12 col-md-12 col-lg-5 align-self-center">
+                  <h1 className="card-title">
+                    <span>{vehicle.desc_VeicMarca}</span>
+                    <span className="text-danger">
+                      {vehicle.desc_VeicModelo}
+                    </span>
+                  </h1>
+                  <p className="text-size--42">{vehicle.desc_VeicTipo}</p>
+                </div>
+                <div className="col-sm-12 col-md-12 col-lg-7 bg-dark text-white p-5">
+                  <h3 className="card-title"><span className="text-danger">Opicionais</span> do veículo</h3>
+                  <p>{vehicle.opcionais}</p>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-sm-12 col-md-12 col-lg-12">
+                  <div className="card">
+                    <div className="card-body">
+                      {/* <p className="card-text"></p> */}
+                      <div className="jumbotron">
+                        <h3>Opicionais do veículo</h3>
+                        <hr className="my-4" />
+                        <p>{vehicle.opcionais}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-sm-12 col-md-12 col-lg-12">
+                  <img className="img-fluid" src={urusjpg} alt="..." />
+                </div>
+
+                <div className="col-sm-12 col-md-12 col-lg-12">
+                  <p>{vehicle.obs_Veiculo}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

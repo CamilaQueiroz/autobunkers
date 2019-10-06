@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import Loading from '../Components/Loading'
 export default function Card({ vehicle }) {
   const [DescVeic, setDescVeic] = useState('');
   useEffect(() => {
@@ -8,7 +8,9 @@ export default function Card({ vehicle }) {
     setDescVeic(descriptionCar);
   }, [vehicle.descveiccompleto]);
   return (
+
     <div className="card mb-3 shadow-sm">
+      <Loading />
       <div className="row no-gutters">
         <Link to={`/detalhes/${vehicle.iD_Veiculo}/${DescVeic}`}>
           <img

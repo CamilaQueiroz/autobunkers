@@ -10,7 +10,7 @@ export default function Card({ vehicle }) {
   return (
 
     <div className="card mb-3 shadow-sm">
-      <Loading />
+      {/* <Loading /> */}
       <div className="row no-gutters">
         <Link to={`/detalhes/${vehicle.iD_Veiculo}/${DescVeic}`}>
           <img

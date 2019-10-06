@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import Card from '../Components/Card';
 import Search from '../Components/Search';
+import Loading from '../Components/Loading';
+
 import bannerStock from '../Images/auto-bunkers-banner-home.jpg';
 
 function Main(props) {
@@ -24,6 +26,7 @@ function Main(props) {
   const [qtdVeiculos, setQtdVeiculos] = useState(0);
   const pageCount = Math.ceil(qtdVeiculos / size);
   const [messageNotFound, setMessageNotFound] = useState('');
+  const loading = ['', '', '', '', '', '', '', '', '', '', '', ''];
 
   useEffect(() => {
     sessionStorage.setItem('currentPage', page);
@@ -132,19 +135,11 @@ function Main(props) {
               <div className="col-12 mb-2">
                 {messageNotFound && <h1>{messageNotFound}</h1>}
               </div>
-              {qtdVeiculos === 0 && (
-                <div className="col-4 justify-content-center">
-                  <div className="timeline-item">
-                    <div className="animated-background">
-                      <div className="d-flex justify-content-center">
-                        <div className="spinner-grow text-danger" role="status">
-                          <span className="sr-only">Loading...</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              <div className="col-12">
+                <div className="row">
+                  {qtdVeiculos === 0 && loading.map(load => <Loading />)}
                 </div>
-              )}
+              </div>
               {props.stateStockFilter
                 ? stock.map(car => (
                     <div

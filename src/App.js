@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Nav from './Components/Header/Nav';
-import Footer from './Components/Footer/Footer'
+// import Footer from './Components/Footer/Footer';
 import Routes from './routes';
 import './Styles/Components.css';
 import api from './Services/api';
@@ -38,7 +38,7 @@ function App(props) {
     <BrowserRouter>
       <Nav />
       <Routes />
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }

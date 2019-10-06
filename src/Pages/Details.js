@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import FsLightbox from 'fslightbox-react';
 import logoSite from '../Images/logo-site.png';
 import urusjpg from '../Images/urus.jpg';
-import lojaCima from '../Images/autob-loja--vistacima.jpg';
+import lojaCima from '../Images/auto-bunkers-banner-home.jpg';
 
-import Loja from '../Images/autob-loja--2.jpg';
+import Loja from '../Images/auto-bunkers-banner-home.jpg';
 import '../Styles/Components.css';
 import api from '../Services/api';
 
@@ -41,7 +41,7 @@ function Details(props) {
           <div
             className="col-sm-12 col-md-12 col-lg-3 d-none d-xl-block bg-dark p-5"
             style={{
-              backgroundImage: `url(${  Loja  })`,
+              backgroundImage: `url(${Loja})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center center',
               backgroundRepeat: 'no-repeat',

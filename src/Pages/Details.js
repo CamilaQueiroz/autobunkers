@@ -4,6 +4,7 @@ import FsLightbox from 'fslightbox-react';
 import logoSite from '../Images/logo-site.png';
 import urusjpg from '../Images/urus.jpg';
 import '../Styles/Components.css';
+import api from '../Services/api';
 
 function Details(props) {
   const [vehicle, setVehicle] = useState({});
@@ -14,18 +15,21 @@ function Details(props) {
 
   useEffect(() => {
     const idParam = Number(props.match.params.id);
-    console.info(`idParam ${idParam}`);
-    props.stock.some(car => {
-      setMessageError('Carregando...');
-      if (car.iD_Veiculo === idParam) {
-        setVehicle(car);
-        setPhotos(car.fotos);
-      }
-      return car.iD_Veiculo === idParam;
-    });
+    api
+      .post('api/Veiculos/requestVeiculo', {
+        iD_Veiculo: idParam,
+      })
+      .then(res => {
+        if (res.status === 200) {
+          setVehicle(res.data);
+          setPhotos(res.data.fotos);
+        } else {
+          setMessageError('Ocorreu um erro, tente novamente mais tarde');
+        }
+      })
+      .catch(err => console.error(err));
     setLoading(false);
-    setMessageError('');
-  });
+  }, [vehicle]);
 
   return (
     <div className="container-fluid mt-5 p-0">
@@ -101,33 +105,31 @@ function Details(props) {
                   <span className="sr-only">Next</span>
                 </a>
               </div>
-              
             </div>
           </div>
           <div className="col-sm-12 col-md-12 col-lg-4">
-          <div className="col-div-lightbox mt-3">
-                {photos.map(photo => (
+            <div className="col-div-lightbox mt-3">
+              {photos.map(photo => (
+                <img
+                  className="img-lightbox-custom"
+                  onClick={() => setToggler(!toggler)}
+                  key={photo.url}
+                  src={photo.url}
+                  alt="photos"
+                />
+              ))}
+              <FsLightbox
+                toggler={toggler}
+                customSources={photos.map(photo => (
                   <img
                     className="img-lightbox-custom"
-                    onClick={() => setToggler(!toggler)}
                     key={photo.url}
                     src={photo.url}
                     alt="photos"
                   />
                 ))}
-                <FsLightbox
-                  toggler={toggler}
-                  customSources={photos.map(photo => (
-                    <img
-                      className="img-lightbox-custom"
-                      key={photo.url}
-                      src={photo.url}
-                      alt="photos"
-                    />
-                  ))}
-                />
-              </div>
-            
+              />
+            </div>
           </div>
         </div>
         <div className="row">
@@ -135,9 +137,7 @@ function Details(props) {
             <div className="col-sm-12 col-md-12 col-lg-5 align-self-center">
               <h1 className="card-title">
                 <span>{vehicle.desc_VeicMarca}</span>
-                <span className="text-danger">
-                  {vehicle.desc_VeicModelo}
-                </span>
+                <span className="text-danger">{vehicle.desc_VeicModelo}</span>
               </h1>
               <p className="text-size--42">{vehicle.desc_VeicTipo}</p>
             </div>

@@ -12,7 +12,7 @@ function Search(props) {
         type: 'FILTER_STOCK_TEXT',
         inputValue,
       });
-      setInputValue('');
+      props.handleFiltered(inputValue);
     }
   };
   return (
@@ -20,39 +20,41 @@ function Search(props) {
       <p className="text-size--22">Encontre seu veículo</p>
       <div className="card bg-image--card--1 bg-transparent p-5">
         <div className="card-body">
-
-            <form onSubmit={handleSearch} className="input-group input-group-lg">
-              <input
-                type="text"
-                className="form-control border-danger"
-                placeholder="Qual carro está procurando?"
-                aria-label="Recipient's username"
-                aria-describedby="button-addon2"
-                onChange={e => setInputValue(e.target.value)}
-              />
-              <div className="input-group-append">
-                <button
-                  className="btn btn-danger"
-                  type="button"
-                  id="button-addon1"
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="Busca"
-                  onClick={handleSearch}
-                >
-                  Pesquisar
-                </button>
-                <button
-                  className="btn btn-warning"
-                  type="button"
-                  id="button-addon2"
-                  data-toggle="modal"
-                  data-target="#modalSearch"
-                >
-                  <i className="fab fa-searchengin" />
-                </button>
-              </div>
-            </form>
+          <form onSubmit={handleSearch} className="input-group input-group-lg">
+            <input
+              type="text"
+              disabled={props.mainStock.length <= 0 && 'true'}
+              className="form-control border-danger"
+              placeholder="Qual carro está procurando?"
+              aria-label="Recipient's username"
+              aria-describedby="button-addon2"
+              onChange={e => setInputValue(e.target.value.toLowerCase())}
+            />
+            <div className="input-group-append">
+              <button
+                className="btn btn-danger"
+                disabled={props.mainStock.length <= 0 && 'true'}
+                type="button"
+                id="button-addon1"
+                data-toggle="tooltip"
+                data-placement="top"
+                title="Busca"
+                onClick={handleSearch}
+              >
+                Pesquisar
+              </button>
+              <button
+                className="btn btn-warning"
+                disabled={props.mainStock.length <= 0 && 'true'}
+                type="button"
+                id="button-addon2"
+                data-toggle="modal"
+                data-target="#modalSearch"
+              >
+                <i className="fab fa-searchengin" />
+              </button>
+            </div>
+          </form>
 
           <div className="col-sm-12 col-md-12 col-lg-12 m-0">
             <p>
@@ -122,4 +124,6 @@ function Search(props) {
   );
 }
 
-export default connect()(Search);
+export default connect(state => ({
+  mainStock: state.Stock,
+}))(Search);

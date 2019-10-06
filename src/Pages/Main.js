@@ -103,13 +103,15 @@ function Main(props) {
         </div>
         <div className="row mt-5">
           <div className="col-sm-12 col-md-2 col-lg-2 align-center main-side--1 text-right">
-            <p className="text-size--22 m-0">
-              <small className="text-danger bold">
-                {' '}
-                - Referência em veículos
-              </small>
-            </p>
-            <p className="display-4 m-0">Auto Bunkers</p>
+            <div className="col d-none d-md-block">
+              <p className="text-size--22 m-0">
+                <small className="text-danger bold">
+                  {' '}
+                  - Referência em veículos
+                </small>
+              </p>
+              <p className="display-4 m-0">Auto Bunkers</p>
+            </div>
           </div>
           <div className="col-sm-12 col-md-10 col-lg-10">
             <div className="row">
@@ -132,9 +134,15 @@ function Main(props) {
                 {messageNotFound && <h1>{messageNotFound}</h1>}
               </div>
               {qtdVeiculos === 0 && (
-                <div className="d-flex justify-content-center">
-                  <div className="spinner-grow text-danger" role="status">
-                    <span className="sr-only">Loading...</span>
+                <div className="col-4 justify-content-center">
+                  <div className="timeline-item">
+                    <div className="animated-background">
+                      <div className="d-flex justify-content-center">
+                        <div className="spinner-grow text-danger" role="status">
+                          <span className="sr-only">Loading...</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               )}

@@ -13,6 +13,7 @@ function Details(props) {
   const [vehicle, setVehicle] = useState({});
   const [loading, setLoading] = useState(true);
   const [photos, setPhotos] = useState([]);
+  const [mainPicture, setMainPicture] = useState('');
   const [messageError, setMessageError] = useState('');
   const [toggler, setToggler] = useState(false);
 
@@ -26,6 +27,7 @@ function Details(props) {
         if (res.status === 200) {
           setVehicle(res.data);
           setPhotos(res.data.fotos);
+          setMainPicture(res.data.fotos[0].url);
         } else {
           setMessageError('Ocorreu um erro, tente novamente mais tarde');
         }
@@ -41,7 +43,7 @@ function Details(props) {
           <div
             className="col-sm-12 col-md-12 col-lg-3 d-none d-xl-block bg-dark p-5"
             style={{
-              backgroundImage: `url(${Loja})`,
+              backgroundImage: `url(${mainPicture})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center center',
               backgroundRepeat: 'no-repeat',
@@ -166,14 +168,7 @@ function Details(props) {
                     ))}
                     <FsLightbox
                       toggler={toggler}
-                      customSources={photos.map(photo => (
-                        <img
-                          className="img-lightbox-custom"
-                          key={photo.url}
-                          src={photo.url}
-                          alt="photos"
-                        />
-                      ))}
+                      customSources={[photos.map(photo => photo.url)]}
                     />
                   </div>
                   <h3 className="text-size--42 text-right">

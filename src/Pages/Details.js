@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import FsLightbox from 'fslightbox-react';
 import logoSite from '../Images/logo-site.png';
 import urusjpg from '../Images/urus.jpg';
-import lojaCima from '../Images/auto-bunkers-banner-home.jpg';
+import lojaCima from '../Images/autob-loja--vistacima.jpg';
 
-import Loja from '../Images/auto-bunkers-banner-home.jpg';
+import Loja from '../Images/autob-loja--2.jpg';
 import '../Styles/Components.css';
 import api from '../Services/api';
 

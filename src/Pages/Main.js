@@ -166,7 +166,7 @@ function Main(props) {
                     <ul className="pagination">
                       <li className={`page-item ${page <= 0 && 'disabled'}`}>
                         <a
-                          className="page-link"
+                          className="page-link--1"
                           href="javascript:void(0)"
                           onClick={() => setPage(page - 1)}
                           aria-label="Previous"
@@ -176,7 +176,7 @@ function Main(props) {
                       </li>
                       <li>
                         <a
-                          className="page-link pagination"
+                          className="page-link--1 pagination"
                           href="javascript:void(0)"
                           aria-label="Previous"
                         >
@@ -189,7 +189,7 @@ function Main(props) {
                           'disabled'}`}
                       >
                         <a
-                          className="page-link"
+                          className="page-link--1"
                           href="javascript:void(0)"
                           onClick={() => setPage(page + 1)}
                           aria-label="Next"

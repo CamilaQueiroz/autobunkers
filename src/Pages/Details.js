@@ -201,6 +201,34 @@ function Details(props) {
                   <p>{vehicle.opcionais}</p>
                 </div>
               </div>
+              <div className="row p-5">
+                <div className="col-sm-12 col-md-12 col-lg-8">
+                  <img className="img-fluid" src={lojaCima} alt="..." />
+                </div>
+                <div className="col-sm-12 col-md-12 col-lg-4 bg-light text-dark p-5 align-self-center">
+                  <h3 className="card-title">
+                    <span className="text-danger">Sobre</span> a Auto Bunkers
+                  </h3>
+                  <p>{vehicle.obs_Veiculo}</p>
+                </div>
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
               <div className="row">
                 <div className="col-sm-12 col-md-12 col-lg-12">
                   <div className="card">
@@ -215,11 +243,11 @@ function Details(props) {
                   </div>
                 </div>
                 <div className="col-sm-12 col-md-12 col-lg-12">
-                  <img className="img-fluid" src={lojaCima} alt="..." />
+
                 </div>
 
                 <div className="col-sm-12 col-md-12 col-lg-12">
-                  <p>{vehicle.obs_Veiculo}</p>
+                  <p></p>
                 </div>
               </div>
             </div>

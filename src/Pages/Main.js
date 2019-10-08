@@ -101,6 +101,17 @@ function Main(props) {
           <div className="col-sm-12 col-md-12 col-lg-12 my-4">
             <div className="container">
               <Search handleFiltered={handleFiltered} />
+              {props.stateStockFilter === false && (
+                <div className="d-flex justify-content-center m-3">
+                  <button
+                    type="button"
+                    className="btn btn-info"
+                    onClick={() => changeStateStockFilter()}
+                  >
+                    Limpar a busca
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -118,14 +129,7 @@ function Main(props) {
           <div className="col-sm-12 col-md-10 col-lg-10">
             <div className="row">
               <div className="col-12 mb-2">
-                {props.stateStockFilter === false && (
-                  <button
-                    type="button"
-                    onClick={() => changeStateStockFilter()}
-                  >
-                    Remover busca
-                  </button>
-                )}
+
                 {qtdVeiculos !== 0 && (
                   <p className="text-right">
                     Temos <b>{qtdVeiculos}</b> veículos em nosso estoque{' '}
@@ -142,21 +146,21 @@ function Main(props) {
               </div>
               {props.stateStockFilter
                 ? stock.map(car => (
-                    <div
-                      key={car.iD_Veiculo}
-                      className="col-sm-12 col-md-6 col-lg-4 card-vehicle-stock"
-                    >
-                      <Card vehicle={car} />
-                    </div>
-                  ))
+                  <div
+                    key={car.iD_Veiculo}
+                    className="col-sm-12 col-md-6 col-lg-4 card-vehicle-stock"
+                  >
+                    <Card vehicle={car} />
+                  </div>
+                ))
                 : filteredStock.map(car => (
-                    <div
-                      key={car.iD_Veiculo}
-                      className="col-sm-12 col-md-6 col-lg-4 card-vehicle-stock"
-                    >
-                      <Card vehicle={car} />
-                    </div>
-                  ))}
+                  <div
+                    key={car.iD_Veiculo}
+                    className="col-sm-12 col-md-6 col-lg-4 card-vehicle-stock"
+                  >
+                    <Card vehicle={car} />
+                  </div>
+                ))}
             </div>
 
             {props.stateStockFilter ? (
@@ -202,50 +206,50 @@ function Main(props) {
                 )}
               </div>
             ) : (
-              <div className="row justify-content-around my-5">
-                {pageCount !== 0 && qtdVeiculos > size && (
-                  <nav aria-label="Page navigation example">
-                    <ul className="pagination">
-                      <li
-                        className={`page-item ${pageFilter <= 0 && 'disabled'}`}
-                      >
-                        <a
-                          className="page-link"
-                          href="javascript:void(0)"
-                          onClick={() => setPageFilter(pageFilter - 1)}
-                          aria-label="Previous"
+                <div className="row justify-content-around my-5">
+                  {pageCount !== 0 && qtdVeiculos > size && (
+                    <nav aria-label="Page navigation example">
+                      <ul className="pagination">
+                        <li
+                          className={`page-item ${pageFilter <= 0 && 'disabled'}`}
                         >
-                          <span aria-hidden="true">&laquo;</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="page-link pagination"
-                          href="javascript:void(0)"
-                          aria-label="Previous"
-                        >
-                          Página {pageFilter + 1} de {pageCount}{' '}
-                        </a>
-                      </li>
+                          <a
+                            className="page-link"
+                            href="javascript:void(0)"
+                            onClick={() => setPageFilter(pageFilter - 1)}
+                            aria-label="Previous"
+                          >
+                            <span aria-hidden="true">&laquo;</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            className="page-link pagination"
+                            href="javascript:void(0)"
+                            aria-label="Previous"
+                          >
+                            Página {pageFilter + 1} de {pageCount}{' '}
+                          </a>
+                        </li>
 
-                      <li
-                        className={`page-item ${pageFilter + 1 === pageCount &&
-                          'disabled'}`}
-                      >
-                        <a
-                          className="page-link"
-                          href="javascript:void(0)"
-                          onClick={() => setPageFilter(pageFilter + 1)}
-                          aria-label="Next"
+                        <li
+                          className={`page-item ${pageFilter + 1 === pageCount &&
+                            'disabled'}`}
                         >
-                          <span aria-hidden="true">&raquo;</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </nav>
-                )}
-              </div>
-            )}
+                          <a
+                            className="page-link"
+                            href="javascript:void(0)"
+                            onClick={() => setPageFilter(pageFilter + 1)}
+                            aria-label="Next"
+                          >
+                            <span aria-hidden="true">&raquo;</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </nav>
+                  )}
+                </div>
+              )}
 
             <div className="row">
               <div className="col-12">

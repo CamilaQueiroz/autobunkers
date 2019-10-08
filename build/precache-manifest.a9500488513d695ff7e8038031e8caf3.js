@@ -1,31 +1,39 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c712c6211d32639fff37eecc99c8c1ba",
+    "revision": "5a86e003eb3a30574a2d731a6121eacb",
     "url": "/index.html"
   },
   {
-    "revision": "1227cf4a332dbe888dd7",
+    "revision": "e6b74e8f7b3a41ad6683",
     "url": "/static/css/2.bc536066.chunk.css"
   },
   {
-    "revision": "912e89c3dfbef0d05295",
-    "url": "/static/css/main.ebc095bf.chunk.css"
+    "revision": "7e0276a5e02c4aa0888a",
+    "url": "/static/css/main.df886dd1.chunk.css"
   },
   {
-    "revision": "1227cf4a332dbe888dd7",
-    "url": "/static/js/2.070b05c6.chunk.js"
+    "revision": "e6b74e8f7b3a41ad6683",
+    "url": "/static/js/2.eaaeb731.chunk.js"
   },
   {
-    "revision": "912e89c3dfbef0d05295",
-    "url": "/static/js/main.cef31ea8.chunk.js"
+    "revision": "7e0276a5e02c4aa0888a",
+    "url": "/static/js/main.0f7e733a.chunk.js"
   },
   {
-    "revision": "312c8cdeb1bf0305b503",
-    "url": "/static/js/runtime~main.cb81d4e1.js"
+    "revision": "e7f05984ddded36c98ac",
+    "url": "/static/js/runtime~main.d4f5fc57.js"
   },
   {
     "revision": "a8c2f937aa6f7ae95746c2d78d5590a9",
     "url": "/static/media/auto-bunkers-banner-home.a8c2f937.jpg"
+  },
+  {
+    "revision": "d451519df40c6a7ec009177549d6fa25",
+    "url": "/static/media/autob-loja--2.d451519d.jpg"
+  },
+  {
+    "revision": "6c934364cd67ac0ec25c8714bedf1a1d",
+    "url": "/static/media/autob-loja--vistacima.6c934364.jpg"
   },
   {
     "revision": "06147b6cd88c7346cecd1edd060cd5de",

@@ -38,7 +38,7 @@ function Details(props) {
 
   return (
     <div className="container-fluid mt-5 p-0">
-      <div className="container-fluid">
+      <div className="container-fluid p-0">
         <div className="d-flex">
           <div
             className="col-sm-12 col-md-12 col-lg-3 d-none d-xl-block bg-dark p-5"
@@ -49,12 +49,12 @@ function Details(props) {
               backgroundRepeat: 'no-repeat',
               minHeight: '500px',
               maxHeight: '100%',
-              opacity: 0.785,
+              opacity: 0.585,
             }}
           >
-            <div className="col flex-column main-side--1 text-right text-light">
-              <p className="text-size--42 my-0">{vehicle.desc_VeicTipo}</p>
-              <p className="text-size--72 my-0">
+            <div className="col flex-column main-side--1 text-right text-dark">
+              <p className="text-size--42 m-0">{vehicle.desc_VeicTipo}</p>
+              <p className="text-size--72 m-0">
                 <strong className="text-danger">
                   {vehicle.desc_VeicMarca}{' '}
                 </strong>
@@ -62,7 +62,7 @@ function Details(props) {
               </p>
             </div>
           </div>
-          <div className="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+          <div className="col-sm-12 col-md-12 col-lg-12 col-xl-9 px-0 px-md-3">
             <div className="col-sm-12 col-md-12 col-lg-12 col-xl-12">
               <div className="row">
                 <div className="col-sm-12 col-md-12 col-lg-12 col-xl-8">
@@ -148,6 +148,9 @@ function Details(props) {
                   </div>
                 </div>
                 <div className="col-sm-12 col-md-12 col-lg-12 col-xl-4">
+                  <h3 className="text-size--42 text-right">
+                    R${vehicle.vlrWeb_Veiculo}
+                  </h3>
                   <div className="alert alert-dark" role="alert">
                     Veja as imagens em tela cheia.
                     <a href="#" className="alert-link">
@@ -171,15 +174,13 @@ function Details(props) {
                       customSources={[photos.map(photo => photo.url)]}
                     />
                   </div>
-                  <h3 className="text-size--42 text-right">
-                    R${vehicle.vlrWeb_Veiculo}
-                  </h3>
+
                 </div>
               </div>
             </div>
 
             <div className="container-fluid">
-              <div className="row p-5">
+              <div className="row py-5 py-md-5">
                 <div className="col-sm-12 col-md-12 col-lg-5 align-self-center">
                   <h1 className="card-title">
                     <span>{vehicle.desc_VeicMarca}</span>
@@ -196,8 +197,8 @@ function Details(props) {
                   <p>{vehicle.opcionais}</p>
                 </div>
               </div>
-              <div className="row p-5">
-                <div className="col-sm-12 col-md-12 col-lg-8">
+              <div className="row p-0 p-md-5">
+                <div className="col-sm-12 col-md-12 col-lg-8 p-0 p-md-4">
                   <img className="img-fluid" src={lojaCima} alt="..." />
                 </div>
                 <div className="col-sm-12 col-md-12 col-lg-4 bg-light text-dark p-5 align-self-center">
@@ -205,44 +206,6 @@ function Details(props) {
                     <span className="text-danger">Sobre</span> a Auto Bunkers
                   </h3>
                   <p>{vehicle.obs_Veiculo}</p>
-                </div>
-              </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-              <div className="row">
-                <div className="col-sm-12 col-md-12 col-lg-12">
-                  <div className="card">
-                    <div className="card-body">
-                      {/* <p className="card-text"></p> */}
-                      <div className="jumbotron">
-                        <h3>Opicionais do veículo</h3>
-                        <hr className="my-4" />
-                        <p>{vehicle.opcionais}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-sm-12 col-md-12 col-lg-12">
-
-                </div>
-
-                <div className="col-sm-12 col-md-12 col-lg-12">
-                  <p></p>
                 </div>
               </div>
             </div>

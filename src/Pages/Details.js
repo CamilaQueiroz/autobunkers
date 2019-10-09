@@ -168,7 +168,15 @@ function Details(props) {
                     ))}
                     <FsLightbox
                       toggler={toggler}
-                      customSources={[photos.map(photo => photo.url)]}
+                      customSources={[
+                        photos.map(photo => (
+                          <div>
+                            <img src={photo.url} alt="Foto" />
+                          </div>
+                        )),
+                      ]}
+                      type="image"
+                      key={photos}
                     />
                   </div>
                   <h3 className="text-size--42 text-right">

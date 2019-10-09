@@ -22,7 +22,7 @@ function App(props) {
         if (response.status !== 200) {
           return;
         }
-
+        localStorage.setItem('stock', JSON.stringify(response.data));
         const { dispatch } = props;
         dispatch({
           type: 'ADD_STOCK',
@@ -43,4 +43,6 @@ function App(props) {
   );
 }
 
-export default connect()(App);
+export default connect(state => ({
+  mainStock: state.Stock,
+}))(App);

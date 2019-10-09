@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+
 import MarcasList from './MarcasList';
+import SearchAdv from './SearchAdv';
 
 function Search(props) {
   const [inputValue, setInputValue] = useState('');
@@ -23,17 +25,19 @@ function Search(props) {
           <form onSubmit={handleSearch} className="input-group input-group-lg">
             <input
               type="text"
-              disabled={props.mainStock.length <= 0 && 'true'}
+              placeholder={
+                props.mainStock.length <= 0
+                  ? 'Carregando...'
+                  : 'Qual carro está procurando?'
+              }
               className="form-control border-danger"
-              placeholder="Qual carro está procurando?"
-              aria-label="Recipient's username"
+              aria-label="Veiculo"
               aria-describedby="button-addon2"
               onChange={e => setInputValue(e.target.value.toLowerCase())}
             />
             <div className="input-group-append">
               <button
                 className="btn btn-danger"
-                disabled={props.mainStock.length <= 0 && 'true'}
                 type="button"
                 id="button-addon1"
                 data-toggle="tooltip"
@@ -41,17 +45,38 @@ function Search(props) {
                 title="Busca"
                 onClick={handleSearch}
               >
-                Pesquisar
+                {props.mainStock.length <= 0 ? (
+                  <>
+                    <span
+                      className="spinner-grow spinner-grow-sm"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                    <span className="sr-only">Loading...</span>
+                  </>
+                ) : (
+                  <>Pesquisar</>
+                )}
               </button>
               <button
                 className="btn btn-warning"
-                disabled={props.mainStock.length <= 0 && 'true'}
                 type="button"
                 id="button-addon2"
                 data-toggle="modal"
-                data-target="#modalSearch"
+                data-target={props.mainStock.length !== 0 && '#modalSearch'}
               >
-                <i className="fab fa-searchengin" />
+                {props.mainStock.length <= 0 ? (
+                  <>
+                    <span
+                      className="spinner-grow spinner-grow-sm"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                    <span className="sr-only">Loading...</span>
+                  </>
+                ) : (
+                  <i className="fab fa-searchengin" />
+                )}
               </button>
             </div>
           </form>
@@ -91,7 +116,7 @@ function Search(props) {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">
-                Modal title
+                Busca por marca
               </h5>
               <button
                 type="button"
@@ -102,21 +127,7 @@ function Search(props) {
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div className="modal-body">
-              <p />
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" className="btn btn-primary">
-                Save changes
-              </button>
-            </div>
+            <SearchAdv />
           </div>
         </div>
       </div>

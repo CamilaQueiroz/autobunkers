@@ -6,7 +6,6 @@ export default function Loading(props) {
       <div className="timeline-item">
         <div className="animated-background">
           <div className="d-flex justify-content-center">
-            <div className="spinner-grow text-danger" role="status" />
           </div>
         </div>
       </div>

@@ -14,9 +14,9 @@ function App(props) {
       .post('/api/Veiculos/requestVeiculos', {
         iD_Categoria: 1,
         iD_TipoVeiculo: 0,
-        ordenacao: 1,
+        ordenacao: 3,
         paginaCorrente: 1,
-        qtdItensPagina: 5000,
+        qtdItensPagina: 150,
       })
       .then(async response => {
         if (response.status !== 200) {

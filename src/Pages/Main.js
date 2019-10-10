@@ -33,7 +33,8 @@ function Main(props) {
 
   useEffect(() => {
     sessionStorage.setItem('currentPage', page);
-  }, [page]);
+    handleFiltered(props.filterModal);
+  }, [page, props.filterModal]);
 
   useEffect(() => {
     sessionStorage.setItem('currentPageFilter', pageFilter);
@@ -47,24 +48,58 @@ function Main(props) {
 
   useEffect(() => {
     if (props.stateStockFilter) {
-      setQtdVeiculos(props.mainStock.length);
-      const start = page * size;
-      const end = start + size;
-      setStock(props.mainStock.slice(start, end));
+      const localStock = JSON.parse(localStorage.getItem('stock'));
+      if (localStock) {
+        setQtdVeiculos(localStock.length);
+        const start = page * size;
+        const end = start + size;
+        setStock(localStock.slice(start, end));
+      } else {
+        setQtdVeiculos(props.mainStock.length);
+        const start = page * size;
+        const end = start + size;
+        setStock(props.mainStock.slice(start, end));
+      }
+      if (
+        props.mainStock.length > 0 &&
+        JSON.stringify(localStock) !== JSON.stringify(props.mainStock)
+      ) {
+        console.info('certo');
+        setQtdVeiculos(props.mainStock.length);
+        const start = page * size;
+        const end = start + size;
+        setStock(props.mainStock.slice(start, end));
+      }
     }
   }, [props.mainStock, page, props.stateStockFilter]);
 
   const handleFiltered = text => {
-    if (text !== '') {
+    if (text) {
       setPageFilter(0);
       sessionStorage.setItem('currentPageFilter', 0);
       const filterText = props.mainStock.filter(car => {
         return car.descveiccompleto.toLowerCase().includes(text);
       });
+
+      const filter = props.mainStock.filter(car => {
+        const tipoFilter = car.desc_TipoVeiculo.startsWith(
+          props.filterModal.type
+        );
+
+        const brandFilter = car.iD_VeicMarca === props.filterModal.brand;
+
+        const modelFilter = car.iD_VeicModelo === props.filterModal.model;
+
+        return tipoFilter && brandFilter && modelFilter;
+      });
+
+      console.info(filter);
+
       const start = pageFilter * size;
       const end = start + size;
 
       if (filterText.length > 0) {
+        setMessageNotFound('');
         setQtdVeiculos(filterText.length);
         const { dispatch } = props;
         dispatch({
@@ -76,7 +111,7 @@ function Main(props) {
           state: false,
         });
         setFilteredStock(filterText.slice(start, end));
-      } else {
+      } else if (stock.length > 0) {
         setMessageNotFound('Não encontramos veículos para essa busca');
         timer = setTimeout(() => {
           setMessageNotFound('');
@@ -270,5 +305,6 @@ export default connect(state => ({
   mainStock: state.Stock,
   textInput: state.textFilter,
   textFilteredStock: state.StockFilter,
+  filterModal: state.Filter,
   stateStockFilter: state.NoFilter,
 }))(Main);

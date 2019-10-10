@@ -80,8 +80,16 @@ body {
     top: 10px;
   } */
 
+  .text-size--12 {
+    font-size: 12px !important;
+  }
+
 .text-size--22 {
   font-size: 22px !important;
+}
+
+.text-size--32 {
+  font-size: 32px !important;
 }
 
 .text-size--42 {

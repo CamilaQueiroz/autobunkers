@@ -28,6 +28,9 @@ function Main(props) {
   const [messageNotFound, setMessageNotFound] = useState('');
   const loading = ['', '', '', '', '', '', '', '', '', '', '', ''];
 
+
+  
+
   useEffect(() => {
     sessionStorage.setItem('currentPage', page);
   }, [page]);
@@ -120,7 +123,7 @@ function Main(props) {
             <div className="col d-none d-md-block">
               <p className="text-size--22 m-0">
                 <small className="text-danger bold">
-                  - Referência em veículos
+                  - Referência em veículos blindados
                 </small>
               </p>
               <p className="display-4 m-0">Auto Bunkers</p>

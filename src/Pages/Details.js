@@ -181,14 +181,23 @@ function Details(props) {
 
             <div className="container-fluid">
               <div className="row py-5 py-md-5">
-                <div className="col-sm-12 col-md-12 col-lg-5 align-self-center">
+                <div className="col-sm-12 col-md-12 col-lg-5 align-self-center bg-light p-0 p-md-3">
                   <h1 className="card-title">
                     <span>{vehicle.desc_VeicMarca}</span>
                     <span className="text-danger">
                       {vehicle.desc_VeicModelo}
                     </span>
                   </h1>
-                  <p className="text-size--42">{vehicle.desc_VeicTipo}</p>
+                  <p className="text-size--32">{vehicle.desc_VeicTipo}</p>
+
+                  <div class="d-flex align-content-end flex-wrap">
+                    <ul className="list-inline"></ul>
+                    <li className="list-inline-item p-3"><h5 className="text-second text-size--12 text-danger">Ano </h5><span className="font-weight-bold text-size--22">{vehicle.anoveic}</span></li>
+                    <li className="list-inline-item p-3"><h5 className="text-second text-size--12 text-danger">Km </h5><span className="font-weight-bold text-size--22">{vehicle.kM_Veiculo}</span></li>
+                    <li className="list-inline-item p-3"><h5 className="text-second text-size--12 text-danger">Combustível </h5><span className="font-weight-bold text-size--22">{vehicle.desc_Combustivel}</span></li>
+                    <li className="list-inline-item p-3"><h5 className="text-second text-size--12 text-danger">Situação </h5><span className="font-weight-bold text-size--22">{vehicle.desc_TipoVeiculo}</span></li>
+                    <li className="list-inline-item p-3"><h5 className="text-second text-size--12 text-danger">Cor </h5><span className="font-weight-bold text-size--22">{vehicle.cor_Veiculo}</span></li>
+                  </div>
                 </div>
                 <div className="col-sm-12 col-md-12 col-lg-7 bg-dark text-white p-5">
                   <h3 className="card-title">

@@ -14,17 +14,16 @@ function Brand({ match, stock }) {
     setList(filteredStock);
   });
   return (
-    <>
-      {list.map(car => (
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-12 col-md-6 col-lg-6 align-center">
-              <Card vehicle={car} />
-            </div>
-          </div>
-        </div>
-      ))}
-    </>
+    <div className="container-fluid">
+      <div className="row p-0 p-md-5">
+          {/* <div className="col p-5"><h2 className="text-center">Audi</h2></div> */}
+            {list.map(car => (
+              <div className="col-sm-12 col-md-6 col-lg-4 card-vehicle-stock">
+                <Card vehicle={car} />
+              </div>
+            ))}
+      </div>
+    </div>
   );
 }
 

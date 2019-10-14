@@ -53,6 +53,9 @@ export default function Footer() {
                         <li className="list-inline-item px-3"><a href="#" className="item-link" target="_blank"><i className="fab fa-whatsapp"></i></a></li>
                     </ul>
                 </div>
+                <div className="col-sm-12 col-md-12 col-lg-12 p-3 text-center">
+                    <p>Desenvolvido por <a className="text-decoration-none text-light" href="https://cabrahost.com" target="_blank">Cabra Host</a> - v.0.6.11</p>
+                </div>
             </div>
 
         </div>
